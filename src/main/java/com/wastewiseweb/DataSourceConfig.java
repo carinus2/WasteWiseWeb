@@ -13,7 +13,7 @@ public class DataSourceConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres");
+        dataSource.setPassword("Catelusi5!");
         dataSource.setSchema("public");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
         return dataSource;
