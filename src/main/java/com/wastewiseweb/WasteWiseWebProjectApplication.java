@@ -26,5 +26,16 @@ public class WasteWiseWebProjectApplication {
 //		user.setPassword("parola");
 //		regularUserRepository.save(user);
 //	}
+	@PostConstruct
+	public void insertData(){
+		var user = new RegularUserEntity();
+		user.setFirstName("helena");
+		user.setEmail("helena@mail.com");
+		user.setLastName("pastore");
+		user.setPhoneNumber("0743060122");
+		user.setAddress("caransebes");
+		user.setPassword("parolaHelena");
+		regularUserRepository.save(user);
+	}
 
 }
