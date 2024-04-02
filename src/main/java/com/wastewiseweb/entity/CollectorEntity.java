@@ -19,8 +19,9 @@ public class CollectorEntity {
     private String phoneNumber;
     @Column(name="email")
     private String email;
-    @Column(name="cabID")
-    private String cabID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="cabID")
+    private CabEntity cabID;
     @Column(name="password")
     private String password;
     public CollectorEntity(){}
@@ -65,11 +66,11 @@ public class CollectorEntity {
         this.email = email;
     }
 
-    public String getCabID() {
+    public CabEntity getCabID() {
         return cabID;
     }
 
-    public void setCabID(String cabID) {
+    public void setCabID(CabEntity cabID) {
         this.cabID = cabID;
     }
 

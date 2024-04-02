@@ -1,5 +1,7 @@
 package com.wastewiseweb.dto;
 
+import com.wastewiseweb.entity.CabEntity;
+
 public class CollectorDto {
 
     private Integer id;
@@ -8,8 +10,7 @@ public class CollectorDto {
     private String phoneNumber;
     private String email;
     private String password;
-
-    private String cabID;
+    private Integer cabID;
 
     public CollectorDto(){}
 
@@ -61,11 +62,11 @@ public class CollectorDto {
         this.password = password;
     }
 
-    public String getCabID() {
+    public Integer getCabID() {
         return cabID;
     }
 
-    public void setCabID(String cabID) {
+    public void setCabID(Integer cabID) {
         this.cabID = cabID;
     }
 }
