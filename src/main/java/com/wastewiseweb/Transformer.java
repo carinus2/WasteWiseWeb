@@ -39,7 +39,7 @@ public class Transformer {
         dto.setLastName(entity.getLastName());
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setPassword(entity.getPassword());
-        dto.setCabID(entity.getCabID());
+        dto.setCabID(entity.getId());
         return dto;
     }
 
@@ -51,7 +51,7 @@ public class Transformer {
         entity.setLastName(dto.getLastName());
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setPassword(dto.getPassword());
-        entity.setCabID(dto.getCabID());
+        entity.setCabID(entity.getCabID());
         return entity;
     }
 

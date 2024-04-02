@@ -24,9 +24,9 @@ public class OrderEntity {
     @JoinColumn(name = "collector_id")
     private CollectorEntity collector;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "payment_id")
-//    private Payment payment;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 
     public OrderEntity(){}
 
@@ -62,11 +62,11 @@ public class OrderEntity {
         this.collector = collector;
     }
 
-//    public Payment getPayment() {
-//        return payment;
-//    }
-//
-//    public void setPayment(Payment payment) {
-//        this.payment = payment;
-//    }
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 }
