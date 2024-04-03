@@ -67,7 +67,6 @@ public class Transformer {
     public static CabEntity fromDto(CabDto dto) {
         CabEntity entity = new CabEntity();
         entity.setId(dto.getId());
-        entity.setCollector(fromDto(entity.getCollector()));
         entity.setPlateNumber(dto.getPlateNumber());
         return entity;
     }
@@ -86,9 +85,6 @@ public class Transformer {
         OrderEntity entity = new OrderEntity();
         entity.setId(dto.getId());
         entity.setType(StatusType.valueOf(dto.getType()));
-//        entity.setRegularUser(findRegularUserById(dto.getRegularUserId()));
-//        entity.setCollector(findCollectorById(dto.getCollectorId()));
-//        entity.setPayment(findPaymentById(dto.getPaymentId()));
         return entity;
     }
 
@@ -105,7 +101,6 @@ public class Transformer {
         PaymentEntity entity = new PaymentEntity();
         entity.setId(dto.getId());
         entity.setPaymentMethod(PaymentType.valueOf(dto.getPaymentType()));
-        // entity.setOrder(findOrderById(dto.getOrderId()));
         entity.setAmount(dto.getAmount());
         return entity;
     }
@@ -124,7 +119,6 @@ public class Transformer {
         RecyclableItemsEntity entity = new RecyclableItemsEntity();
         entity.setId(dto.getId());
         entity.setType(ItemsType.valueOf(dto.getItemsType()));
-        entity.setOrderId(dto);
         entity.setRatePerItem(dto.getRatePerItem());
         entity.setQuantity(dto.getQuantity());
         return entity;

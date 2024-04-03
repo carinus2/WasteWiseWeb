@@ -29,7 +29,7 @@ public class CabService {
                 .toList();
     }
 
-    public CabDto addUser(CabDto cabDto){
+    public CabDto addCab(CabDto cabDto){
         CabEntity cabEntity = Transformer.fromDto(cabDto);
         CabEntity savedCab = cabRepository.save(cabEntity);
         return Transformer.toDto(savedCab);

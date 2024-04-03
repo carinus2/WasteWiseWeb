@@ -25,7 +25,7 @@ public class OrderService {
                 .toList();
     }
 
-    public OrderDto addUser(OrderDto orderDto){
+    public OrderDto addOrder(OrderDto orderDto){
         OrderEntity orderEntity = Transformer.fromDto(orderDto);
         OrderEntity savedOrder = orderRepository.save(orderEntity);
         return Transformer.toDto(savedOrder);
