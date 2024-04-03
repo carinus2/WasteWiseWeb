@@ -12,9 +12,11 @@ import java.util.List;
 public class RecyclableItemsService {
 
     private final RecyclableItemsRepository recyclableItemsRepository;
+    private final Transformer transformer;
 
-    public RecyclableItemsService(RecyclableItemsRepository recyclableItemsRepository) {
+    public RecyclableItemsService(RecyclableItemsRepository recyclableItemsRepository,Transformer transformer) {
         this.recyclableItemsRepository = recyclableItemsRepository;
+        this.transformer = transformer;
     }
 
     public List<RecyclableItemsDto> getRecyclableItems(){
@@ -25,7 +27,7 @@ public class RecyclableItemsService {
     }
 
     public RecyclableItemsDto addRecyclableItem(RecyclableItemsDto recyclableItemDto){
-        RecyclableItemsEntity recyclableItemEntity = Transformer.fromDto(recyclableItemDto);
+        RecyclableItemsEntity recyclableItemEntity = transformer.fromDto(recyclableItemDto);
         RecyclableItemsEntity savedRecyclableItem = recyclableItemsRepository.save(recyclableItemEntity);
         return Transformer.toDto(savedRecyclableItem);
     }

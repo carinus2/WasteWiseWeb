@@ -6,10 +6,34 @@ import com.wastewiseweb.enums.ItemsType;
 import com.wastewiseweb.enums.PaymentType;
 import com.wastewiseweb.enums.StatusType;
 import com.wastewiseweb.repository.CollectorRepository;
+import com.wastewiseweb.repository.OrderRepository;
+import com.wastewiseweb.repository.PaymentRepository;
+import com.wastewiseweb.repository.RegularUserRepository;
+import com.wastewiseweb.service.CollectorService;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Transformer {
+    private final CollectorRepository collectorRepository;
+    private final CollectorService collectorService;
+    private final OrderRepository orderRepository;
+    private final PaymentRepository paymentRepository;
+    private final RegularUserRepository regularUserRepository;
 
-    private static CollectorRepository collectorRepository;
+
+    @Autowired
+    public Transformer(CollectorService collectorService, OrderRepository orderRepository,
+                       PaymentRepository paymentRepository, RegularUserRepository regularUserRepository,
+                        CollectorRepository collectorRepository) {
+        this.collectorService = collectorService;
+        this.orderRepository = orderRepository;
+        this.paymentRepository = paymentRepository;
+        this.regularUserRepository = regularUserRepository;
+        this.collectorRepository = collectorRepository;
+    }
+
 
     public static RegularUserDto toDto(RegularUserEntity entity){
         var dto = new RegularUserDto();
@@ -67,11 +91,18 @@ public class Transformer {
         return dto;
     }
 
-    public static CabEntity fromDto(CabDto dto) {
+    public CabEntity fromDto(CabDto dto) {
         CabEntity entity = new CabEntity();
         entity.setId(dto.getId());
-       // entity.setCollector(dto.getCollectorId());
         entity.setPlateNumber(dto.getPlateNumber());
+
+        if (dto.getCollectorId() != null) {
+            CollectorEntity collector = collectorService.findCollectorById(dto.getCollectorId());
+            entity.setCollector(collector);
+        } else {
+            entity.setCollector(null);
+        }
+
         return entity;
     }
 
@@ -85,12 +116,32 @@ public class Transformer {
         return dto;
     }
 
-    public static OrderEntity fromDto(OrderDto dto) {
+    public OrderEntity fromDto(OrderDto dto) {
         OrderEntity entity = new OrderEntity();
         entity.setId(dto.getId());
-        entity.setType(StatusType.valueOf(dto.getType()));
+        entity.setType(StatusType.valueOf(dto.getType().replace(" ", "_").toUpperCase()));
+
+        if (dto.getRegularUserId() != null) {
+            RegularUserEntity regularUser = regularUserRepository.findById(dto.getRegularUserId())
+                    .orElseThrow(() -> new EntityNotFoundException("RegularUser not found with ID: " + dto.getRegularUserId()));
+            entity.setRegularUser(regularUser);
+        }
+
+        if (dto.getCollectorId() != null) {
+            CollectorEntity collector = collectorRepository.findById(dto.getCollectorId())
+                    .orElseThrow(() -> new EntityNotFoundException("Collector not found with ID: " + dto.getCollectorId()));
+            entity.setCollector(collector);
+        }
+
+        if (dto.getPaymentId() != null) {
+            PaymentEntity payment = paymentRepository.findById(dto.getPaymentId())
+                    .orElseThrow(() -> new EntityNotFoundException("Payment not found with ID: " + dto.getPaymentId()));
+            entity.setPayment(payment);
+        }
+
         return entity;
     }
+
 
     public static PaymentDto toDto(PaymentEntity entity) {
         PaymentDto dto = new PaymentDto();
@@ -101,13 +152,22 @@ public class Transformer {
         return dto;
     }
 
-    public static PaymentEntity fromDto(PaymentDto dto) {
+    public PaymentEntity fromDto(PaymentDto dto) {
         PaymentEntity entity = new PaymentEntity();
         entity.setId(dto.getId());
-        entity.setPaymentMethod(PaymentType.valueOf(dto.getPaymentType()));
+        entity.setPaymentMethod(PaymentType.valueOf(dto.getPaymentType().toUpperCase()));
         entity.setAmount(dto.getAmount());
+
+        if (dto.getOrderId() != null) {
+            OrderEntity order = orderRepository.findById(dto.getOrderId())
+                    .orElseThrow(() -> new EntityNotFoundException("Order not found with ID: " + dto.getOrderId()));
+            entity.setOrder(order);
+        }
+
         return entity;
     }
+
+
 
     public static RecyclableItemsDto toDto(RecyclableItemsEntity entity) {
         RecyclableItemsDto dto = new RecyclableItemsDto();
@@ -119,13 +179,18 @@ public class Transformer {
         return dto;
     }
 
-    public static RecyclableItemsEntity fromDto(RecyclableItemsDto dto) {
+    public RecyclableItemsEntity fromDto(RecyclableItemsDto dto) {
         RecyclableItemsEntity entity = new RecyclableItemsEntity();
         entity.setId(dto.getId());
-        entity.setType(ItemsType.valueOf(dto.getItemsType()));
+        entity.setType(ItemsType.valueOf(dto.getItemsType().toUpperCase()));
         entity.setRatePerItem(dto.getRatePerItem());
         entity.setQuantity(dto.getQuantity());
+
+        if (dto.getOrderId() != null) {
+            OrderEntity order = orderRepository.findById(dto.getOrderId())
+                    .orElseThrow(() -> new EntityNotFoundException("Order not found with ID: " + dto.getOrderId()));
+            entity.setOrderId(order);
+        }
         return entity;
     }
-
 }
