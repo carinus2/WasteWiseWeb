@@ -2,7 +2,7 @@
 
 WasteWiseWeb is a platform dedicated to reducing global waste by making recycling easier and more accurate. 
 
-Utilizing a web application built with Java for the backend, React Native for the frontend, and MongoDB for the database, we provide users with critical information on proper waste disposal and offer the ability to locate the nearest recycling points in their area. 
+Utilizing a web application built with Java for the backend, React Native for the frontend, and PostgreSQL for the database, we provide users with critical information on proper waste disposal and offer the ability to locate the nearest recycling points in their area. 
 
 What we want to offer:
 -Recycling Directory: A comprehensive guide to recyclable materials, detailing what can and cannot be recycled, along with instructions for preparing items for recycling.
