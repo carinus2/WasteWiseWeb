@@ -15,8 +15,14 @@ import java.util.List;
 @Service
 public class OrderService {
 
-    @Autowired
     private OrderRepository orderRepository;
+    private Transformer transformer;
+
+    @Autowired
+    public OrderService(OrderRepository orderRepository, Transformer transformer) {
+        this.orderRepository = orderRepository;
+        this.transformer = transformer;
+    }
 
     public List<OrderDto> getOrders(){
         return orderRepository.findAll()
@@ -26,7 +32,7 @@ public class OrderService {
     }
 
     public OrderDto addOrder(OrderDto orderDto){
-        OrderEntity orderEntity = Transformer.fromDto(orderDto);
+        OrderEntity orderEntity = transformer.fromDto(orderDto);
         OrderEntity savedOrder = orderRepository.save(orderEntity);
         return Transformer.toDto(savedOrder);
     }

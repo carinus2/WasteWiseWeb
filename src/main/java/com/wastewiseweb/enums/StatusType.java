@@ -1,13 +1,13 @@
 package com.wastewiseweb.enums;
 
 public enum StatusType {
-    ORDER_TAKE,
+    ORDER_TAKEN,
     FIVE_MORE_MINUTES,
     ARRIVING_SOON,
     IM_HERE;
     public String getType() {
         switch (this) {
-            case ORDER_TAKE:
+            case ORDER_TAKEN:
                 return "Order Taken";
             case FIVE_MORE_MINUTES:
                 return "Five More Minutes";

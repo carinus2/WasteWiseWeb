@@ -26,6 +26,10 @@ public class CollectorService {
                 .toList();
     }
 
+    public CollectorEntity findCollectorById(Integer id) {
+        return collectorRepository.findById(id).orElse(null);
+    }
+
     public CollectorDto addCollector(CollectorDto collectorDto){
         CollectorEntity collectorEntity = Transformer.fromDto(collectorDto);
         CollectorEntity savedCollector = collectorRepository.save(collectorEntity);
