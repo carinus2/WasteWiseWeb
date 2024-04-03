@@ -5,8 +5,11 @@ import com.wastewiseweb.entity.*;
 import com.wastewiseweb.enums.ItemsType;
 import com.wastewiseweb.enums.PaymentType;
 import com.wastewiseweb.enums.StatusType;
+import com.wastewiseweb.repository.CollectorRepository;
 
 public class Transformer {
+
+    private static CollectorRepository collectorRepository;
 
     public static RegularUserDto toDto(RegularUserEntity entity){
         var dto = new RegularUserDto();
@@ -67,6 +70,7 @@ public class Transformer {
     public static CabEntity fromDto(CabDto dto) {
         CabEntity entity = new CabEntity();
         entity.setId(dto.getId());
+       // entity.setCollector(dto.getCollectorId());
         entity.setPlateNumber(dto.getPlateNumber());
         return entity;
     }

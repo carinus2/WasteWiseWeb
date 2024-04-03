@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.Media;
 import java.util.List;
 
 @RestController
@@ -18,7 +17,6 @@ public class RegularUserController {
         this.regularUserService = regularUserService;
     }
 
-  //  @RequestMapping(method = RequestMethod.GET)//echivalente asta de sus cu asta de jos
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<RegularUserDto>> getRegularUsers(){
         return ResponseEntity.ok(regularUserService.getUsers());
