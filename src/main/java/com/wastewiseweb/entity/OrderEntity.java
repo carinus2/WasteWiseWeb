@@ -3,8 +3,6 @@ package com.wastewiseweb.entity;
 import com.wastewiseweb.enums.StatusType;
 import jakarta.persistence.*;
 
-import java.util.stream.Collector;
-
 @Entity
 @Table(name="ORDERS")
 public class OrderEntity {
@@ -26,7 +24,7 @@ public class OrderEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_id")
-    private Payment payment;
+    private PaymentEntity paymentEntity;
 
     public OrderEntity(){}
 
@@ -62,11 +60,11 @@ public class OrderEntity {
         this.collector = collector;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public PaymentEntity getPayment() {
+        return paymentEntity;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setPayment(PaymentEntity paymentEntity) {
+        this.paymentEntity = paymentEntity;
     }
 }

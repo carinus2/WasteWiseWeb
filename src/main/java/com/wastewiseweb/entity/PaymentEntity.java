@@ -1,10 +1,11 @@
 package com.wastewiseweb.entity;
 
+import com.wastewiseweb.enums.PaymentType;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "PAYMENTS")
-public class Payment {
+public class PaymentEntity {
 
     @Id
     @SequenceGenerator(name = "paymentsGenerator", sequenceName = "sq_payments_id", allocationSize = 1)
@@ -16,12 +17,12 @@ public class Payment {
     private OrderEntity order;
 
     @Column(name = "payment_method")
-    private String paymentMethod;
+    private PaymentType paymentMethod;
 
     @Column
     private Double amount;
 
-    public Payment() {}
+    public PaymentEntity() {}
 
     public Integer getId() {
         return id;
@@ -39,11 +40,11 @@ public class Payment {
         this.order = order;
     }
 
-    public String getPaymentMethod() {
+    public PaymentType getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentType paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

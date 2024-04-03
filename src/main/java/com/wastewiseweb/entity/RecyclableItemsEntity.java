@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="RECYCLABLE_ITEMS")
-public class RecyclableItems {
+public class RecyclableItemsEntity {
 
     @Id
     @SequenceGenerator(name = "recyclableItemsGenerator", sequenceName = "sq_recyclable_items_id", allocationSize = 1)
@@ -21,7 +21,7 @@ public class RecyclableItems {
     @Column
     private Double quantity;
 
-    public RecyclableItems(){}
+    public RecyclableItemsEntity(){}
     public Integer getId() {
         return id;
     }
