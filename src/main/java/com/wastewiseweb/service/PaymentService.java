@@ -15,9 +15,13 @@ import java.util.List;
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;
+    private final Transformer transformer;
 
     @Autowired
-    public PaymentService(PaymentRepository paymentRepository){ this.paymentRepository = paymentRepository; }
+    public PaymentService(PaymentRepository paymentRepository, Transformer transformer){
+        this.paymentRepository = paymentRepository;
+        this.transformer = transformer;
+    }
 
     public List<PaymentDto> getPayments(){
         return paymentRepository.findAll()
@@ -27,7 +31,7 @@ public class PaymentService {
     }
 
     public PaymentDto addPayment(PaymentDto paymentDto){
-        PaymentEntity paymentEntity = Transformer.fromDto(paymentDto);
+        PaymentEntity paymentEntity = transformer.fromDto(paymentDto);
         PaymentEntity savedPayment = paymentRepository.save(paymentEntity);
         return Transformer.toDto(savedPayment);
     }
