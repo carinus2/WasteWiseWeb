@@ -1,0 +1,71 @@
+.login-container {
+  max-width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.login-header .logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.login-header h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.remember-me {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.forgot-password {
+  color: #00A699;
+  text-decoration: none;
+}
+
+.btn-sign-in {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #00A699;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-sign-in:hover {
+  background-color: #00897b;
+}
+
+.sign-up {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.btn-sign-up {
+  color: #00A699;
+  text-decoration: none;
+}
+
+.btn-sign-up:hover {
+  text-decoration: underline;
+}
+
+/* Add any additional global styles, such as font-families, colors, etc. */
