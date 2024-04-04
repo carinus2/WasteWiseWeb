@@ -15,17 +15,7 @@ public class WasteWiseWebProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WasteWiseWebProjectApplication.class, args);
 	}
-//	@PostConstruct
-//	public void insertData(){
-//		var user = new RegularUserEntity();
-//		user.setFirstName("carina");
-//		user.setEmail("carina@mail.com");
-//		user.setLastName("nistor");
-//		user.setPhoneNumber("123456");
-//		user.setAddress("caransebes");
-//		user.setPassword("parola");
-//		regularUserRepository.save(user);
-//	}
+
 	@PostConstruct
 	public void insertData(){
 		var user = new RegularUserEntity();
