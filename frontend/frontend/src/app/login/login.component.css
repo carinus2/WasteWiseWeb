@@ -1,12 +1,15 @@
 .login-container {
-  max-width: 300px;
-  margin: 50px auto;
-  padding: 20px;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 160px;
   text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .login-header .logo {
-  max-width: 100%;
+  max-width: 30%;
   height: auto;
 }
 
@@ -31,13 +34,16 @@
 .remember-me {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 0.9em;
+}
+
+.remember-me label {
+  margin-left: 5px;
 }
 
 .forgot-password {
   color: #00A699;
   text-decoration: none;
+  margin-left: auto;
 }
 
 .btn-sign-in {
@@ -68,4 +74,4 @@
   text-decoration: underline;
 }
 
-/* Add any additional global styles, such as font-families, colors, etc. */
+
