@@ -1,0 +1,54 @@
+.signup-container {
+  max-width: 600px;
+  margin: 0 auto; /* Centers the form horizontally */
+  margin-top: 100px; /* Space from the top */
+  margin-bottom: 0; /* Space from the bottom */
+  padding: 110px; /* Padding inside the container */
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-control {
+  width: 100%; /* Full width */
+  padding: 20px; /* Comfortable padding for typing */
+  margin-bottom: 10px; /* Space between inputs */
+  border-radius: 20px; /* Rounded corners for the input fields */
+  border: 1px solid #ccc; /* Subtle border color */
+  box-sizing: border-box; /* Box sizing to include padding in width */
+}
+
+/* Sign Up Button Styling */
+.btn-sign-up {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #5cb85c; /* Adjust color to differentiate from Sign In button */
+  color: white;
+  cursor: pointer;
+}
+
+.btn-sign-up:hover {
+  background-color: #4cae4c; /* Darker shade on hover for the button */
+}
+
+/* Sign In Link Styling (Below the Sign Up form) */
+.signin-link {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.signin-link a {
+  color: #00A699;
+  text-decoration: none;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
+}
