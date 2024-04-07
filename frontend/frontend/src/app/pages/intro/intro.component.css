@@ -59,25 +59,47 @@ body, html {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4); /* Increase the opacity; was 0.5 before */
   z-index: 1;
 }
 
 
 
 .hero-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  color: rgba(0, 77, 80, 0.9);
+  font-size: 3rem; /* Increased size */
+  /*color: #ffffff; !* White color for contrast *!*/
+  font-weight: 700; /* Bold weight for importance */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Drop shadow for legibility */
+  margin-bottom: 2rem;
+  transition: all 0.5s ease-in-out; /* Smooth transition for text */
 }
 
 .hero-section p {
-  font-size: 1.2rem;
+  color: rgba(0, 77, 100, 0.9);
+  font-size: 1.5rem; /* Larger than before */
+  /*color: #ffffff;*/
+  line-height: 1.8; /* Increased line height for readability */
+  max-width: 800px; /* Maximum width to avoid overly long lines */
+  margin: auto; /* Centering the text */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   margin-bottom: 2rem;
+  transition: all 0.5s ease-in-out;
 }
 
+/* Animation when the element is in view */
 .hero-content {
-  position: relative;
-  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 1s forwards;
+  animation-delay: 0.5s; /* Delay the animation */
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-section .cta-button {
@@ -157,19 +179,32 @@ body, html {
 }
 
 @media (max-width: 768px) {
-  .navbar .nav-links {
-    flex-direction: column;
+  /*.navbar .nav-links {*/
+  /*  flex-direction: column;*/
+  /*}*/
+
+  /*.hero-section {*/
+  /*  padding: 2rem 0;*/
+  /*}*/
+
+  /*.features {*/
+  /*  grid-template-columns: 1fr;*/
+  /*}*/
+
+  /*.site-footer .footer-content {*/
+  /*  flex-direction: column;*/
+  /*}*/
+
+  .hero-section h1 {
+    font-size: 2rem; /* Smaller size for mobile */
   }
 
-  .hero-section {
-    padding: 2rem 0;
+  .hero-section p {
+    font-size: 1rem; /* Smaller size for mobile */
   }
 
-  .features {
-    grid-template-columns: 1fr;
-  }
-
-  .site-footer .footer-content {
-    flex-direction: column;
+  /* You might want to adjust the timing or remove animations on mobile */
+  .hero-content {
+    animation: none;
   }
 }

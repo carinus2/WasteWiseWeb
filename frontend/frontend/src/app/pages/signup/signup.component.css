@@ -29,13 +29,13 @@
   padding: 10px;
   border: none;
   border-radius: 20px;
-  background-color: #5cb85c;
+  background-color: #00A699;
   color: white;
   cursor: pointer;
 }
 
 .btn-sign-up:hover {
-  background-color: #4cae4c;
+  background-color: #00897b;
 }
 
 
