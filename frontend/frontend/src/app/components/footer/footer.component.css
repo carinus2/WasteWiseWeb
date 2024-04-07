@@ -1,7 +1,15 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 .site-footer {
   background-color: #333;
   color: white;
   padding: 15px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-inner {
@@ -48,7 +56,10 @@
   margin-right: 0;
 }
 
-/* Adaugă media queries pentru un design responsiv dacă este necesar */
+.content {
+  min-height: calc(100vh - 130px);
+}
+
 @media (max-width: 768px) {
   .footer-inner {
     flex-direction: column;
