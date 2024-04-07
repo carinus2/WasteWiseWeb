@@ -43,11 +43,13 @@ body, html {
 
 .hero-section {
   position: relative;
-  background: url('/assets/header-background.jpg') no-repeat center center/cover;
+  background: url('/assets/header-background.jpg');
   background-size: 100% 100%;
   text-align: center;
   padding: 8rem 0;
   color: #fff;
+  background-size: contain; /* or a specific size, e.g., '100% auto' */
+  background-attachment: fixed;
 }
 
 .hero-section::after {
