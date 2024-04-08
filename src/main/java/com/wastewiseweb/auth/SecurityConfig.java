@@ -23,7 +23,7 @@ public class SecurityConfig {
     @Autowired
     public void configureGlobal(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin").password("{noop}admin").roles("ADMIN", "USER");
+                .withUser("admin").password("{noop}admin").roles("ADMIN", "REGULAR_USER");
 
     }
 
