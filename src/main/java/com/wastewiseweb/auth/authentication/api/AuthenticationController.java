@@ -9,6 +9,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.util.Collections;
+
 
 @RestController
 @RequestMapping("/api/auth")
@@ -24,14 +26,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> authenticateUser( @RequestBody AuthenticationRequest request) {
-
+    public ResponseEntity<AuthenticationResponse> authenticateUser(@RequestBody AuthenticationRequest request) {
         var authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-        var roles = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
         var jwt = jwtUtils.generateJwtToken(authentication);
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt, roles));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, Collections.emptyList())); // Trimiteți o listă goală pentru roluri
     }
 }

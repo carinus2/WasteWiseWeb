@@ -35,8 +35,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/navbar.component.css"
+              "src/styles.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",

@@ -29,7 +29,7 @@ export class LoginComponent {
 
     this.authService.login(user).subscribe({
       next: (response) => {
-        console.log(username);
+        this.router.navigate(['/intro']);
       
       },
       error: (err) => {

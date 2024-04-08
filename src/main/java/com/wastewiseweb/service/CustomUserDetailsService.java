@@ -3,6 +3,8 @@ import com.wastewiseweb.entity.CollectorEntity;
 import com.wastewiseweb.entity.RegularUserEntity;
 import com.wastewiseweb.repository.CollectorRepository;
 import com.wastewiseweb.repository.RegularUserRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,34 +12,32 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Collections;
 import java.util.Optional;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private RegularUserRepository regularUserRepository;
-    @Autowired
-    private CollectorRepository collectorRepository;
+        @PersistenceContext
+        private EntityManager entityManager;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        if("admin@gmail.com".equals(email)) {
-            return new User("admin@gmail.com", "{noop}admin", Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")));
-        } else {
-            Optional<CollectorEntity> collector = collectorRepository.findByEmail(email);
-            if(collector.isPresent()) {
-                CollectorEntity collectorEntity = collector.get();
-                return new User(collectorEntity.getEmail(), collectorEntity.getPassword(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_COLLECTOR")));
-            }
-            Optional<RegularUserEntity> regularUser = regularUserRepository.findByEmail(email);
-            if(regularUser.isPresent()) {
-                RegularUserEntity regularUserEntity = regularUser.get();
-                return new User(regularUserEntity.getEmail(), regularUserEntity.getPassword(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
-            }
-        }
+        RegularUserEntity userEntity = entityManager.createQuery(
+                        "SELECT u FROM RegularUserEntity u WHERE u.email = :email", RegularUserEntity.class)
+                .setParameter("email", email)
+                .getResultList()
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
-        throw new UsernameNotFoundException("User not found with email: " + email);
+        return User.builder()
+                .username(userEntity.getEmail())
+                .password(userEntity.getPassword())
+                .authorities(Collections.emptyList()) // Nu specificați roluri aici
+                .build();
     }
 }

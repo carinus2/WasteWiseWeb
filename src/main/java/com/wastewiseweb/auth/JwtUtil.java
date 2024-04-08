@@ -34,7 +34,6 @@ public class JwtUtil {
             return Jwts.builder()
                     .setSubject(details.getUsername())
                     .setIssuedAt(Date.from(Instant.now()))
-                    .claim("roles", roles)
                     .setExpiration(Date.from(Instant.now().plus(12, ChronoUnit.HOURS)))
                     .signWith(getJwtKey())
                     .compact();
