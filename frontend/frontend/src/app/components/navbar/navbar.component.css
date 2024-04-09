@@ -57,7 +57,7 @@ body, html {
 
 .navbar-button {
   padding: 10px 20px;
-  background-color: #00A699;
+  background-color: #fff;
   color: white;
   text-decoration: none;
   border: none;
@@ -67,7 +67,7 @@ body, html {
 }
 
 .navbar-button:hover {
-  background-color: #00897b;
+  background-color: #d3d3d3;
 }
 
 .main-content {
