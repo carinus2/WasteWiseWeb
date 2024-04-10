@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { IntroComponent } from './components/intro/intro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
