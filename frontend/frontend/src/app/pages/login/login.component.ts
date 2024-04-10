@@ -33,7 +33,7 @@ export class LoginComponent {
       
       },
       error: (err) => {
-        console.error('Eroare la autentificare', err);
+        console.error('Error during login', err);
       },
       
     });
