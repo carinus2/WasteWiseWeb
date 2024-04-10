@@ -10,41 +10,46 @@ body, html {
 }
 
 .app-introduction {
-  background-color: #f7f7f7;
-  padding: 40px;
-  margin: 40px auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Lighter shade for a cleaner look */
+  padding: 60px; /* More padding for a spacious layout */
+  margin: 60px auto; /* Increase margin to center the card on the page */
+  border-radius: 8px; /* Less rounded corners for a more professional look */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); /* Softer shadow for depth */
   max-width: 1000px;
-  text-align: center;
+  text-align: left; /* Align text to the left for better readability */
 }
 
 .app-introduction h2 {
-  color: #0275d8;
-  margin-bottom: 24px;
-  font-size: 2rem;
+  color: #025f99; /* A deeper blue for a more professional tone */
+  margin-bottom: 32px;
+  font-size: 2.5rem; /* Slightly larger for importance */
+  font-weight: 600; /* Less bold for a sophisticated look */
 }
 
 .app-introduction p {
-  color: #333;
+  color: #333333;
   line-height: 1.8;
-  font-size: 1.1rem;
-  margin-bottom: 24px;
+  font-size: 1.2rem; /* Slightly larger for readability */
+  margin-bottom: 32px;
 }
 
 .join-us-button {
-  background-color: #5cb85c;
+  background-color: #4c9f70; /* A more subdued green */
   color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
+  padding: 16px 32px; /* Larger padding for a bigger button */
+  border-radius: 4px; /* Less rounded corners */
   text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  font-weight: 500; /* Not too bold */
+  font-size: 1.1rem; /* Larger font size for readability */
+  transition: all 0.3s ease; /* Transition for hover effects */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); /* Subtle shadow for depth */
 }
 
 .join-us-button:hover {
-  background-color: #449d44;
+  background-color: #40805b; /* A darker shade on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16); /* Slightly deeper shadow on hover */
 }
+
 
 .wave {
   display: inline-block;
