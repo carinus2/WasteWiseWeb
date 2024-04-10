@@ -19,9 +19,8 @@ import java.util.Optional;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-
-        @PersistenceContext
-        private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     @Transactional
@@ -37,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return User.builder()
                 .username(userEntity.getEmail())
                 .password(userEntity.getPassword())
-                .authorities(Collections.emptyList()) // Nu specificați roluri aici
+                .authorities(Collections.emptyList())
                 .build();
     }
 }
