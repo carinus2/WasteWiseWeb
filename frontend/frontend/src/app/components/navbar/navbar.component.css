@@ -1,0 +1,75 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-logo img {
+  height: 60px;
+  width: auto;
+}
+
+
+.navbar-menu {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.navbar-menu li {
+  margin-right: 50px;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+
+
+.navbar-menu li a:hover,
+.navbar-menu li .team-btn:hover,
+.navbar-menu li .get-started-btn:hover {
+  color: #fff;
+}
+
+
+.navbar-button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navbar-button:hover {
+  background-color: #d3d3d3;
+}
+
+.main-content {
+  padding-top: 80px;
+}
