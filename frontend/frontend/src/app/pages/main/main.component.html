@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Welcome to RecyclePro</h1>
+  <div class="options">
+    <button class="option-button" (click)="view = 'map'">
+      <span>View Recycling Points Near Me</span>
+    </button>
+    <button class="option-button" (click)="view = 'pickup'">
+      <span>Request a Pickup</span>
+    </button>
+  </div>
+
+  <div [hidden]="view !== 'map'">
+    <h2>Nearby Recycling Points</h2>
+    <!-- Integration for map here -->
+    <p>Map view will be integrated here.</p>
+  </div>
+
+  <div [hidden]="view !== 'pickup'">
+    <h2>Request a Pickup</h2>
+    <!-- Integration for pickup form here -->
+    <p>Pickup form will be integrated here.</p>
+  </div>
+</div>
