@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/WasteWiseWeb.iml" filepath="$PROJECT_DIR$/.idea/WasteWiseWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Waste-Wise-Web-Project.iml" filepath="$PROJECT_DIR$/Waste-Wise-Web-Project.iml" />
     </modules>
   </component>
 </project>

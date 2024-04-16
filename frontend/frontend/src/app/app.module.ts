@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
@@ -24,7 +26,9 @@ import { FAQComponent } from './pages/faq/faq.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()
