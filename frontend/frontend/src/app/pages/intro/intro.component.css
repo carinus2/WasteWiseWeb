@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f4f8;
+}
+
+.app-introduction {
+  background-color: #ffffff; /* Lighter shade for a cleaner look */
+  padding: 60px; /* More padding for a spacious layout */
+  margin: 60px auto; /* Increase margin to center the card on the page */
+  border-radius: 8px; /* Less rounded corners for a more professional look */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); /* Softer shadow for depth */
+  max-width: 1000px;
+  text-align: left; /* Align text to the left for better readability */
+}
+
+.app-introduction h2 {
+  color: #025f99; /* A deeper blue for a more professional tone */
+  margin-bottom: 32px;
+  font-size: 2.5rem; /* Slightly larger for importance */
+  font-weight: 600; /* Less bold for a sophisticated look */
+}
+
+.app-introduction p {
+  color: #333333;
+  line-height: 1.8;
+  font-size: 1.2rem; /* Slightly larger for readability */
+  margin-bottom: 32px;
+}
+
+.join-us-button {
+  background-color: #4c9f70; /* A more subdued green */
+  color: white;
+  padding: 16px 32px; /* Larger padding for a bigger button */
+  border-radius: 4px; /* Less rounded corners */
+  text-decoration: none;
+  font-weight: 500; /* Not too bold */
+  font-size: 1.1rem; /* Larger font size for readability */
+  transition: all 0.3s ease; /* Transition for hover effects */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); /* Subtle shadow for depth */
+}
+
+.join-us-button:hover {
+  background-color: #40805b; /* A darker shade on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16); /* Slightly deeper shadow on hover */
+}
+
+
+.wave {
+  display: inline-block;
+  animation: wave-animation 2s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave-animation {
+  0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14deg) }
+  20% { transform: rotate(-8deg) }
+  30% { transform: rotate(14deg) }
+  40% { transform: rotate(-4deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }
+  100% { transform: rotate( 0.0deg) }
+}
+
+
+.latest-news-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section {
+  position: relative;
+  background: url('/assets/header-background.jpg');
+  background-size: 100% 100%;
+  text-align: center;
+  padding: 8rem 0;
+  color: #fff;
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+
+
+.hero-section h1 {
+  color: rgba(0, 77, 80, 0.9);
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.hero-section p {
+  color: rgba(0, 77, 100, 0.9);
+  font-size: 1.5rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: auto;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.hero-content {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section .cta-button {
+  background-color: #5cb85c;
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-section .cta-button:hover {
+  background-color: #4cae4c;
+}
+
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  /*align-items: start;*/
+}
+
+.feature {
+  background: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.feature img {
+  width: auto;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+.feature h3 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.feature p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .hero-content {
+    animation: none;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .feature {
+    margin-bottom: 20px;
+  }
+}
