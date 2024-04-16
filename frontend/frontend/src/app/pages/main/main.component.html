@@ -1,23 +1,38 @@
-<div class="container">
-  <h1>Welcome to RecyclePro</h1>
-  <div class="options">
-    <button class="option-button" (click)="view = 'map'">
-      <span>View Recycling Points Near Me</span>
-    </button>
-    <button class="option-button" (click)="view = 'pickup'">
-      <span>Request a Pickup</span>
-    </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Main Page</title>
+  <link rel="stylesheet" href="main.component.css">
+</head>
+<body>
+<!-- Assume Navbar is already included above -->
+<div class="main-container">
+  <h1>Welcome to the Recycling and Collection Service</h1>
+
+  <div class="option" id="recycling-points">
+    <a href="/recycling-points" class="option-button">
+      <div class="option-content">
+        <div class="animation-container map-animation">
+          <!-- Insert SVG or a div for map animation here -->
+        </div>
+        <h2>View Nearest Recycling Points</h2>
+        <p>Locate recycling centers and drop-off points nearest to you and help keep the environment clean.</p>
+      </div>
+    </a>
   </div>
 
-  <div [hidden]="view !== 'map'">
-    <h2>Nearby Recycling Points</h2>
-    <!-- Integration for map here -->
-    <p>Map view will be integrated here.</p>
-  </div>
-
-  <div [hidden]="view !== 'pickup'">
-    <h2>Request a Pickup</h2>
-    <!-- Integration for pickup form here -->
-    <p>Pickup form will be integrated here.</p>
+  <div class="option" id="request-collector">
+    <a href="/request-collector" class="option-button">
+      <div class="option-content">
+        <div class="animation-container rider-animation">
+          <!-- Insert SVG or a div for bike rider animation here -->
+        </div>
+        <h2>Request a Trash Collector</h2>
+        <p>Schedule a pickup for your recyclables and large waste items. It's convenient and eco-friendly!</p>
+      </div>
+    </a>
   </div>
 </div>
+<!-- Assume Footer is already included below -->
+</body>
+</html>
