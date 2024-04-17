@@ -12,7 +12,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
 import { FAQComponent } from './pages/faq/faq.component';
-import { MainComponent } from './pages/main/main.component';
+import { HowtoComponent } from './pages/howto/howto.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { MainComponent } from './pages/main/main.component';
     IntroComponent,
     TeamComponent,
     FAQComponent,
-    MainComponent
+    HowtoComponent
   ],
   imports: [
     BrowserModule,
