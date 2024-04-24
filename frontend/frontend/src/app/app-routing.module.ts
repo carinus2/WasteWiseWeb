@@ -7,6 +7,9 @@ import {TeamComponent} from "./pages/team/team.component";
 import {FAQComponent} from "./pages/faq/faq.component";
 import {HowtoComponent} from "./pages/howto/howto.component";
 import {RecyclingPointsComponent} from "./pages/recycling-points/recycling-points.component";
+import { AdminComponentComponent } from './components/admin-component/admin-component.component';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 import {RequestCollectorComponent} from "./pages/request-collector/request-collector.component";
 
 const routes: Routes = [
@@ -14,6 +17,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'team', component: TeamComponent },
+  { path: "admin-dashboard", component: AdminComponentComponent},
+  { path: "admin-settings", component: AdminSettingsComponent},
+  { path: 'regular-users/:id', component: UserEditComponent },
   { path: 'FAQ', component: FAQComponent },
   { path: 'howto', component: HowtoComponent },
   { path: 'recycling-points', component: RecyclingPointsComponent },
