@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './team.component.css'
 })
 export class TeamComponent {
-
+  isAdminPage: boolean = false;
 }

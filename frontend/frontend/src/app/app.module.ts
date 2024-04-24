@@ -11,6 +11,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
+import { AdminComponentComponent } from './components/admin-component/admin-component.component';
+import { TableModule } from 'primeng/table';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { DialogModule } from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,16 +27,21 @@ import { TeamComponent } from './pages/team/team.component';
     FooterComponent,
     SignupComponent,
     IntroComponent,
-    TeamComponent
+    TeamComponent,
+    AdminComponentComponent,
+    AdminSettingsComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule,
+    TableModule,
+    BrowserAnimationsModule
   ],
   providers: [
-    provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { jwtDecode} from 'jwt-decode'; // Note: Ensure correct import statement based on your setup
+import { jwtDecode} from 'jwt-decode';
 import { RegularUser } from '../models/RegularUserDto';
 import { RegistrationUserDto } from '../models/RegistrationUserDto';
 
@@ -17,7 +17,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, user);
   }
 
-  signUp(user: RegistrationUserDto): Observable<any> {
+  signUp(user: Omit<RegistrationUserDto, 'id'>): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user, { responseType: 'text' });
   }
 
