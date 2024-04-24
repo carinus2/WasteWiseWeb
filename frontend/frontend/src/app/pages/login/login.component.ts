@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'] 
 })
 export class LoginComponent {
-  
+  isAdminPage: boolean = false;
   loginForm!: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {
@@ -21,21 +21,23 @@ export class LoginComponent {
   }
 
   login(): void {
-
     const username = this.loginForm.get('username')?.value;
     const password = this.loginForm.get('password')?.value;
-
-    const user: RegularUser = { username, password };
-
-    this.authService.login(user).subscribe({
-      next: (response) => {
-        this.router.navigate(['/intro']);
-      
-      },
-      error: (err) => {
-        console.error('Error during login', err);
-      },
-      
-    });
+  
+    if (username === 'admin' && password === 'admin') {
+      console.log('Login as admin successful!');
+      this.router.navigate(['/admin-dashboard']); 
+    } else {
+      const user: RegularUser = { username, password };
+  
+      this.authService.login(user).subscribe({
+        next: (response) => {
+          this.router.navigate(['/intro']);
+        },
+        error: (err) => {
+          console.error('Error during login', err);
+        },
+      });
+    }
   }
 }

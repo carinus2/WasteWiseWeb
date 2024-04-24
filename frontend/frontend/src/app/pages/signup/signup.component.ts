@@ -10,7 +10,7 @@ import { RegistrationUserDto } from '../../models/RegistrationUserDto';
   styleUrls: ['./signup.component.css'] 
 })
 export class SignupComponent{
-
+isAdminPage: boolean = false;
   signUpForm!: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {
@@ -34,8 +34,14 @@ export class SignupComponent{
     const homeAddress = this.signUpForm.get('homeAddress')?.value;
 
 
-    const user: RegistrationUserDto = { email, password, phoneNumber, firstName, lastName, homeAddress};
-
+    const user: Omit<RegistrationUserDto, 'id'> = {
+      email,
+      password,
+      phoneNumber,
+      firstName,
+      lastName,
+      homeAddress,
+    };
     this.authService.signUp(user).subscribe({
       next: (response) => {
         console.log('SignUp successful, response:', response);

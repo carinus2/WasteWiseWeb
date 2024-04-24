@@ -10,6 +10,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
+import { AdminComponentComponent } from './components/admin-component/admin-component.component';
+import { TableModule } from 'primeng/table';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { DialogModule } from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FAQComponent } from './pages/faq/faq.component';
 import { HowtoComponent } from './pages/howto/howto.component';
 // import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';
@@ -29,6 +36,10 @@ import { FormsModule } from '@angular/forms';  // Importă FormsModule
     SignupComponent,
     IntroComponent,
     TeamComponent,
+    AdminComponentComponent,
+    AdminSettingsComponent,
+    UserEditComponent,
+    TeamComponent,
     FAQComponent,
     HowtoComponent,
     RecyclingPointsComponent,
@@ -36,11 +47,15 @@ import { FormsModule } from '@angular/forms';  // Importă FormsModule
   ],
   imports: [
     BrowserModule,
-    GoogleMapsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    DialogModule,
+    TableModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
+    GoogleMapsModule,
     CommonModule
   ],
   providers: [

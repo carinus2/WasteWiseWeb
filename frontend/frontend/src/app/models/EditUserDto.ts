@@ -1,7 +1,5 @@
-export interface RegistrationUserDto{
-    id: number;
+export interface EditUserDto{
     email: string;
-    password: string;
     phoneNumber: string;
     firstName: string;
     lastName: string;
