@@ -12,4 +12,5 @@ public class RegularUserDto {
     private String email;
     private String homeAddress;
     private String password;
+
 }
