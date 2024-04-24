@@ -1,10 +1,11 @@
+/* Container general pentru tabel, pentru a controla marginea și lățimea */
 .table-container {
-    margin: 40px auto;
-    width: 95%; 
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); 
+    margin: 20px auto;
+    width: 95%; /* Reducem lățimea pentru a nu atinge marginile ecranului */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* O umbră mai subtilă și mai modernă */
     padding: 35px;
-    background: white;
-    border-radius: 8px; 
+    background: white; /* Fundal alb pentru a evidenția tabelul pe pagina */
+    border-radius: 8px; /* Colțuri rotunjite */
     text-align: left;
 }
 
@@ -23,17 +24,19 @@
 }
 
 .p-datatable thead th {
-    background-color: #5A6268;
+    background-color: #5A6268; /* Un gri închis modern */
     color: white;
     font-weight: 600;
+
+
 }
 
 .p-datatable tbody tr:nth-child(odd) {
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7; /* Un gri foarte deschis pentru contrast slab */
 }
 
 .p-datatable tbody tr:hover {
-    background-color: #e9ecef; 
+    background-color: #e9ecef; /* Efect de hover mai subtil */
 }
 
 .action-button {
@@ -48,17 +51,17 @@
 }
 
 .edit-button {
-    background-color: #17a2b8; 
+    background-color: #17a2b8; /* Culoare teal deschis */
 }
 
 .edit-button:hover {
-    background-color: #138496;
+    background-color: #138496; /* Teal mai închis */
 }
 
 .delete-button {
-    background-color: #dc3545; 
+    background-color: #dc3545; /* Roșu mai puțin agresiv */
 }
 
 .delete-button:hover {
-    background-color: #c82333; 
+    background-color: #c82333; /* Roșu închis la hover */
 }

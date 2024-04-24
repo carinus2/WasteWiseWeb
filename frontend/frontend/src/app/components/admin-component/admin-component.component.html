@@ -20,13 +20,13 @@
                 <td>{{ user.homeAddress }}</td>
                 <td>
                     <button class="action-button edit-button" (click)="editUser(user)">Edit</button>
-                    <button class="action-button delete-button" (click)="deleteUser(user)">Delete</button>
+                    <button class="action-button delete-button">Delete</button>
                 </td>
             </tr>
         </ng-template>
     </p-table>
 </div>
-
+<!-- user-edit.component.html -->
 <p-dialog
           header="Detaliile user-ului"
           [(visible)]="displayEditModal"
@@ -36,6 +36,7 @@
   <div>
     <label>Email:</label>
     <input type="email" formControlName="email">
+    <!-- Add other form fields here -->
   </div>
   <div>
     <label>First Name:</label>

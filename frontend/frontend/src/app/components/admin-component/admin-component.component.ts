@@ -46,7 +46,7 @@ export class AdminComponentComponent implements OnInit {
 
   editUser(user: RegistrationUserDto): void {
     this.selectedUserId = user.id;
-    this.toggleModal();   
+    this.toggleModal();
   }
 
   deleteUser(user: RegistrationUserDto): void {
@@ -62,10 +62,10 @@ export class AdminComponentComponent implements OnInit {
         }
       });
     }
-  }  
+  }
 
   onCancel(){
-    this.toggleModal();    
+    this.toggleModal();
   }
 
   onSave(){
@@ -79,13 +79,13 @@ export class AdminComponentComponent implements OnInit {
       this.userService.editUser(this.selectedUserId,editUserDto).subscribe({
         next: (response) => {
           this.getUsers()
-          this.toggleModal();   
+          this.toggleModal();
         },
         error: (error) => console.log(error)
       })
   }
 
   toggleModal(){
-    this.displayEditModal = !this.displayEditModal; 
+    this.displayEditModal = !this.displayEditModal;
   }
 }

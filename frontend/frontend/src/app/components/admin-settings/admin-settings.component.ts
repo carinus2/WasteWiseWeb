@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +6,7 @@ import { CabService } from '../../services/CabService';
 import { CabDto } from '../../models/CabDto';
 import { CollectorDto } from '../../models/CollectorDto';
 import { forkJoin } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-settings',
@@ -16,7 +18,7 @@ export class AdminSettingsComponent implements OnInit {
   activeItem!: MenuItem;
   activeTab: string = '';
   cabs: CabDto[] = [];
-  collectors: CollectorDto[] = []; 
+  collectors: CollectorDto[] = [];
   displayEditModal: boolean = false;
   editCabForm!: FormGroup;
   selectedCabId!: number;
