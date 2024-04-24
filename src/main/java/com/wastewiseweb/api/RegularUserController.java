@@ -1,5 +1,6 @@
 package com.wastewiseweb.api;
 
+import com.wastewiseweb.dto.EditUserDto;
 import com.wastewiseweb.dto.RegularUserDto;
 import com.wastewiseweb.service.RegularUserService;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,12 @@ public class RegularUserController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RegularUserDto> addUser(@RequestBody RegularUserDto regularUserDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(regularUserService.addUser(regularUserDto));
+    }
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<EditUserDto> editUser(@PathVariable Integer id, @RequestBody EditUserDto editUserDto){
+        editUserDto.setId(id);
+        EditUserDto updatedUser = regularUserService.editUser(editUserDto);
+        return ResponseEntity.ok(updatedUser);
     }
 
 }

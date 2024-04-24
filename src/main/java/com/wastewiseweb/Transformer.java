@@ -47,6 +47,17 @@ public class Transformer {
         return dto;
     }
 
+    public static EditUserDto toEditDto(RegularUserEntity entity){
+        var dto = new EditUserDto();
+        dto.setId(entity.getId());
+        dto.setEmail(entity.getEmail());
+        dto.setFirstName(entity.getFirstName());
+        dto.setLastName(entity.getLastName());
+        dto.setPhoneNumber(entity.getPhoneNumber());
+        dto.setHomeAddress(entity.getAddress());
+        return dto;
+    }
+
     public static RegularUserEntity fromDto(RegularUserDto dto){
         var entity = new RegularUserEntity();
         entity.setId(dto.getId());
