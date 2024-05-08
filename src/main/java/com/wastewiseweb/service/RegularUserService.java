@@ -46,4 +46,9 @@ public class RegularUserService {
         RegularUserEntity updatedUser = regularUserRepository.save(userEntity);
         return Transformer.toEditDto(updatedUser);
     }
+
+    public void deleteUser(Integer id) {
+        regularUserRepository.deleteById(id);
+    }
+
 }
