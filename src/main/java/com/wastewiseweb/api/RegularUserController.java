@@ -34,4 +34,11 @@ public class RegularUserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+        regularUserService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
