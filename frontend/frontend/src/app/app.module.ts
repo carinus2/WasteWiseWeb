@@ -1,21 +1,28 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './pages/signup/signup.component';
 import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
 import { AdminComponentComponent } from './components/admin-component/admin-component.component';
-import { TableModule } from 'primeng/table';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+
+import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TabViewModule } from 'primeng/tabview';
+import { AvatarModule } from 'primeng/avatar';
+import { BadgeModule } from 'primeng/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FAQComponent } from './pages/faq/faq.component';
 import { HowtoComponent } from './pages/howto/howto.component';
@@ -47,11 +54,16 @@ import { FormsModule } from '@angular/forms';  // Importă FormsModule
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    DialogModule,
     TableModule,
+    DialogModule,
+    TabMenuModule,
+    TabViewModule,
+    AvatarModule,
+    BadgeModule
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,

@@ -29,4 +29,15 @@ public class CabController {
     public ResponseEntity<CabDto> addCab(@RequestBody CabDto cabDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(cabService.addCab(cabDto));
     }
+
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CabDto> updateCab(@PathVariable Integer id, @RequestBody CabDto cabDto) {
+        return ResponseEntity.ok(cabService.updateCab(id, cabDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCab(@PathVariable Integer id) {
+        cabService.deleteCab(id);
+        return ResponseEntity.ok().build();
+    }
 }
