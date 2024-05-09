@@ -14,7 +14,7 @@ body, html {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .navbar-logo {
@@ -72,4 +72,6 @@ body, html {
 
 .main-content {
   padding-top: 80px;
+  padding-bottom: 50px;
+  min-height: 100vh; 
 }

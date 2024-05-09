@@ -1,1 +1,37 @@
-<p>admin-settings works!</p>
+<p-tabView>
+    <p-tabPanel header="Cabs">
+        <div class="table-container">
+            <h2>Our Cabs</h2>
+            <p-table [value]="cabs" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>ID</th>
+                        <th pSortableColumn="plateNumber">Plate Number<p-sortIcon field="plateNumber"></p-sortIcon></th>
+                        <th>Collector Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-cab>
+                    <tr>
+                        <td>{{ cab.id }}</td>
+                        <td>{{ cab.plateNumber }}</td>
+                        <td>{{ cab.collectorName }}</td>
+                        <td>
+                            <button class="action-button edit-button" (click)="editCab(cab)">Edit</button>
+                            <button class="action-button delete-button" (click)="deleteCab(cab)">Delete</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Orders">
+        <p>Details about Orders</p>
+    </p-tabPanel>
+    <p-tabPanel header="Collectors">
+        <p>Details about Collectors</p>
+    </p-tabPanel>
+    <p-tabPanel header="Recyclable Products">
+        <p>Details about Recyclable Products</p>
+    </p-tabPanel>
+</p-tabView>

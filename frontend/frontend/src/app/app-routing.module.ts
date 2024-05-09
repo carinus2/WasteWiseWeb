@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: "admin-dashboard", component: AdminComponentComponent},
   { path: "admin-settings", component: AdminSettingsComponent},
+  { path: "admin/logout", component: LoginComponent},
   { path: 'regular-users/:id', component: UserEditComponent }
 
 ];

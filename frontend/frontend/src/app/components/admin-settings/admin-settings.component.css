@@ -1,0 +1,43 @@
+:host ::ng-deep .p-tabview .p-tabview-nav {
+    margin-top: 100px;
+    border-bottom: 1px solid #d0d0d0; /* Light gray border under the tabs */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li {
+    border: none; /* Removes borders from tabs */
+    background-color: transparent; /* Clear background for inactive tabs */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight {
+    background-color: white; /* White background for the active tab */
+    border-bottom: 3px solid blue; /* Blue underline for the active tab */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li a {
+    color: #333; /* Dark grey text for all tabs */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-panels {
+    background-color: white; /* White background for the content area */
+    padding: 20px; /* Padding around the content */
+    border: none; /* Removes border around content area */
+}
+:host ::ng-deep .p-tabview {
+        width: 80%; /* Adjusts width to 80% of the parent container */
+    margin: 20px auto; /* Centers the tab view and adds some vertical space */
+    font-size: 16px; /* Increases the font size for better readability */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li {
+    padding: 10px 20px; /* Increases padding to make tabs larger */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li a {
+    padding: 10px 20px; /* Further increases padding around the links */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-panels {
+    background-color: white;
+    padding: 20px;
+    border: none;
+}
