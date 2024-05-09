@@ -61,4 +61,20 @@ public class CabService {
     public void deleteCab(Integer id) {
         cabRepository.deleteById(id);
     }
+
+    public CabDto updateCab(Integer id, CabDto cabDto) {
+        CabEntity cabEntity = cabRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cab not found with id: " + id));
+        cabEntity.setPlateNumber(cabDto.getPlateNumber());
+        cabEntity.setId(cabDto.getCollectorId());
+        CabEntity updatedCab = cabRepository.save(cabEntity);
+
+        return transformer.toDto(updatedCab);
+    }
+
+
+    @Transactional
+    public void deleteCab(Integer id) {
+        cabRepository.deleteById(id);
+    }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,20 +16,19 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
-import { TabMenuModule } from 'primeng/tabmenu';
-import { TabViewModule } from 'primeng/tabview';
-import { AvatarModule } from 'primeng/avatar';
-import { BadgeModule } from 'primeng/badge';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FAQComponent } from './pages/faq/faq.component';
 import { HowtoComponent } from './pages/howto/howto.component';
 import {CommonModule} from "@angular/common";
 import { RecyclingPointsComponent } from './pages/recycling-points/recycling-points.component';
 import {GoogleMapsModule} from "@angular/google-maps";
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';  // Importă FormsModule
 
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TabViewModule } from 'primeng/tabview';
+import { AvatarModule } from 'primeng/avatar';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -60,10 +58,8 @@ import { RequestCollectorComponent } from './pages/request-collector/request-col
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    DialogModule,
     TableModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     TableModule,
     DialogModule,
     TabMenuModule,
@@ -71,10 +67,14 @@ import { RequestCollectorComponent } from './pages/request-collector/request-col
     AvatarModule,
     BadgeModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     FormsModule,
     GoogleMapsModule,
-    CommonModule
+    CommonModule,
+    DialogModule,
+    TabMenuModule,
+    TabViewModule,
+    AvatarModule,
+    BadgeModule
   ],
   providers: [
     provideHttpClient(withFetch())

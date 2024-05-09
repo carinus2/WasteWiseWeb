@@ -35,6 +35,7 @@ body, html {
   list-style-type: none;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding-left: 20px;
   margin: 0; /* Remove default margin */
 }

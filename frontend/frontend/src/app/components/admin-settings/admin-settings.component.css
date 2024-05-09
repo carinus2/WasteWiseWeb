@@ -45,11 +45,11 @@
 
 :host ::ng-deep .table-container {
     margin: 40px auto;
-    width: 95%; 
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); 
+    width: 95%;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     padding: 35px;
     background: white;
-    border-radius: 8px; 
+    border-radius: 8px;
     text-align: left;
 }
 
@@ -73,18 +73,18 @@
     background-color: #5A6268;
     color: white;
     font-weight: 600;
- 
+
 
 }
 
 
 :host ::ng-deep .p-datatable tbody tr:nth-child(odd) {
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
 }
 
 
 :host ::ng-deep .p-datatable tbody tr:hover {
-    background-color: #e9ecef; 
+    background-color: #e9ecef;
 }
 
 
@@ -101,7 +101,7 @@
 
 
 :host ::ng-deep .edit-button {
-    background-color: #17a2b8; 
+    background-color: #17a2b8;
 }
 
 
@@ -111,10 +111,10 @@
 
 
 :host ::ng-deep .delete-button {
-    background-color: #dc3545; 
+    background-color: #dc3545;
 }
 
 
 :host ::ng-deep .delete-button:hover {
-    background-color: #c82333; 
+    background-color: #c82333;
 }

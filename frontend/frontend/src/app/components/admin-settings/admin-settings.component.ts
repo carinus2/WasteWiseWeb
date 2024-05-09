@@ -1,12 +1,11 @@
 
-import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CabService } from '../../services/CabService';
 import { CabDto } from '../../models/CabDto';
 import { CollectorDto } from '../../models/CollectorDto';
 import { forkJoin } from 'rxjs';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin-settings',
