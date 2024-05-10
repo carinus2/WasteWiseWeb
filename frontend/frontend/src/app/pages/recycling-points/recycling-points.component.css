@@ -1,0 +1,27 @@
+/* Resets */
+html, body, :host {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;  // Prevents any scrollbars from appearing if not necessary
+}
+
+/* Fullscreen map styling */
+google-map {
+  height: 100%;
+  width: 100%;
+  display: block;  // This ensures that the map is not inline and takes full space
+}
+
+/* Styling for the coordinates display */
+.display-coords {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

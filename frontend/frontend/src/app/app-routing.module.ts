@@ -6,6 +6,7 @@ import {IntroComponent} from "./pages/intro/intro.component";
 import {TeamComponent} from "./pages/team/team.component";
 import {FAQComponent} from "./pages/faq/faq.component";
 import {HowtoComponent} from "./pages/howto/howto.component";
+import {RecyclingPointsComponent} from "./pages/recycling-points/recycling-points.component";
 
 const routes: Routes = [
   { path: 'intro', component: IntroComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'FAQ', component: FAQComponent },
   { path: 'howto', component: HowtoComponent },
+  { path: 'recycling-points', component: RecyclingPointsComponent },
 ];
 
 @NgModule({

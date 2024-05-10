@@ -1,15 +1,29 @@
-html, body {
-  height: 100%;
+html {
+  height: 100%; /* Full height of the viewport */
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Makes the HTML flex container */
+}
+
+body {
+  flex: 1; /* Allows body to expand and fill available space */
+  display: flex;
+  flex-direction: column; /* Maintains column layout inside body */
+  margin: 0;
+  min-height: 0; /* Overcome minimum height constraint on flex children */
+}
+
+.content {
+  flex: 1; /* Ensures content expands to fill available space, pushing the footer down */
+  padding: 20px;
 }
 
 .site-footer {
   background-color: #333;
   color: white;
   padding: 15px 0;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  width: 100%; /* Full width of the container */
 }
 
 .footer-inner {
@@ -17,7 +31,7 @@ html, body {
   justify-content: space-around;
   max-width: 2200px;
   margin: auto;
-  padding: 0px;
+  padding: 0 20px;
 }
 
 .footer-section h3 {
@@ -39,11 +53,7 @@ html, body {
   color: #f0b429;
 }
 
-.social-links .facebook {
-  color: #3b5998;
-}
-
-.social-links .instagram {
+.social-links .facebook, .social-links .instagram {
   color: #3b5998;
 }
 
@@ -54,10 +64,6 @@ html, body {
 
 .social-links a:last-child {
   margin-right: 0;
-}
-
-.content {
-  min-height: calc(100vh - 130px);
 }
 
 @media (max-width: 768px) {

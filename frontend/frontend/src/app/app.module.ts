@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -13,6 +12,10 @@ import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { HowtoComponent } from './pages/howto/howto.component';
+// import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';
+import {CommonModule} from "@angular/common";
+import { RecyclingPointsComponent } from './pages/recycling-points/recycling-points.component';
+import {GoogleMapsModule} from "@angular/google-maps";
 
 @NgModule({
   declarations: [
@@ -24,13 +27,17 @@ import { HowtoComponent } from './pages/howto/howto.component';
     IntroComponent,
     TeamComponent,
     FAQComponent,
-    HowtoComponent
+    HowtoComponent,
+    RecyclingPointsComponent,
+    // RequestCollectorComponent,
   ],
   imports: [
     BrowserModule,
+    GoogleMapsModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [
     provideClientHydration()
