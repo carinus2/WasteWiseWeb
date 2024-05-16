@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,11 +6,13 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './recycling-points.component.html',
   styleUrls: ['./recycling-points.component.css']
 })
-export class RecyclingPointsComponent implements OnInit {
+export class RecyclingPointsComponent implements OnInit, AfterViewInit {
   display: any;
   center: google.maps.LatLngLiteral = { lat: 45.7537, lng: 21.2257 }; // Default values
   zoom = 12;
   userLocation: string = '';
+
+  @ViewChild('autocompleteInput', { static: false }) autocompleteInput!: ElementRef;
 
   constructor(private zone: NgZone, private http: HttpClient) {}
 
@@ -18,53 +20,38 @@ export class RecyclingPointsComponent implements OnInit {
     this.getUserLocation();
   }
 
+  ngAfterViewInit(): void {
+    this.initAutocomplete();
+  }
+
   getUserLocation(): void {
     if (navigator.geolocation) {
-      navigator.permissions.query({ name: 'geolocation' }).then((result) => {
-        if (result.state === 'granted' || result.state === 'prompt') {
-          this.getPosition();
-        } else if (result.state === 'denied') {
-          alert('Geolocation permission denied. Please allow location access.');
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.zone.run(() => {
+            this.center = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            this.zoom = 18; // Closer zoom level
+          });
+        },
+        (error) => {
+          console.error('Geolocation error:', error);
           this.setDefaultLocation();
+          alert('Error fetching location: ' + error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0
         }
-        result.onchange = () => {
-          if (result.state === 'granted') {
-            this.getPosition();
-          } else {
-            alert('Geolocation permission changed to ' + result.state);
-            this.setDefaultLocation();
-          }
-        };
-      });
+      );
     } else {
       console.log('Geolocation is not supported by this browser.');
       alert('Geolocation is not supported by this browser.');
       this.setDefaultLocation();
     }
-  }
-
-  getPosition(): void {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.zone.run(() => {
-          this.center = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          this.zoom = 18; // Closer zoom level
-        });
-      },
-      (error) => {
-        console.error('Geolocation error:', error);
-        this.setDefaultLocation();
-        alert('Error fetching location: ' + error.message);
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      }
-    );
   }
 
   setDefaultLocation(): void {
@@ -87,8 +74,29 @@ export class RecyclingPointsComponent implements OnInit {
     }
   }
 
+  initAutocomplete(): void {
+    const autocomplete = new google.maps.places.Autocomplete(this.autocompleteInput.nativeElement, {
+      types: ['geocode']
+    });
+
+    autocomplete.addListener('place_changed', () => {
+      this.zone.run(() => {
+        const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+        if (place.geometry && place.geometry.location) {
+          this.center = {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng()
+          };
+          this.zoom = 18;
+        } else {
+          alert('No details available for input: ' + place.name);
+        }
+      });
+    });
+  }
+
   updateLocation(): void {
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(this.userLocation)}&key="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzKjE6YGJmHyUxpO_v4fYcCRrKmKSUonA&callback=initMap"`;
+    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(this.userLocation)}&key=AIzaSyDzKjE6YGJmHyUxpO_v4fYcCRrKmKSUonA`;
 
     this.http.get(geocodeUrl).subscribe((data: any) => {
       if (data.results && data.results.length > 0) {
@@ -98,7 +106,7 @@ export class RecyclingPointsComponent implements OnInit {
             lat: location.lat,
             lng: location.lng
           };
-          this.zoom = 15;
+          this.zoom = 18;
         });
       } else {
         alert('Location not found!');

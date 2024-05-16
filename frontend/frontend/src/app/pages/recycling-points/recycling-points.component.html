@@ -1,7 +1,7 @@
 <div class="container">
   <div class="controls">
-    <input type="text" placeholder="Enter your location" [(ngModel)]="userLocation" />
-    <button (click)="updateLocation()">Go</button>
+    <input id="autocomplete" #autocompleteInput placeholder="Enter your location" class="location-input" />
+    <button (click)="updateLocation()" class="location-button">Go</button>
   </div>
 
   <div class="map-container">
