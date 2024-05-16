@@ -1,5 +1,6 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-recycling-points',
@@ -9,19 +10,29 @@ import { HttpClient } from '@angular/common/http';
 export class RecyclingPointsComponent implements OnInit, AfterViewInit {
   display: any;
   center: google.maps.LatLngLiteral = { lat: 45.7537, lng: 21.2257 }; // Default values
-  zoom = 12;
+  zoom = 18;
   userLocation: string = '';
 
   @ViewChild('autocompleteInput', { static: false }) autocompleteInput!: ElementRef;
 
-  constructor(private zone: NgZone, private http: HttpClient) {}
+  constructor(
+    private zone: NgZone,
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
-    this.getUserLocation();
+    if (isPlatformBrowser(this.platformId)) {
+      this.getUserLocation();
+    }
   }
 
   ngAfterViewInit(): void {
-    this.initAutocomplete();
+    if (isPlatformBrowser(this.platformId)) {
+      this.loadGoogleMapsApi().then(() => {
+        this.initAutocomplete();
+      });
+    }
   }
 
   getUserLocation(): void {
@@ -59,7 +70,7 @@ export class RecyclingPointsComponent implements OnInit, AfterViewInit {
       lat: 45.7537,
       lng: 21.2257
     };
-    this.zoom = 10;
+    this.zoom = 18;
   }
 
   moveMap(event: google.maps.MapMouseEvent): void {
@@ -114,6 +125,22 @@ export class RecyclingPointsComponent implements OnInit, AfterViewInit {
     }, (error) => {
       console.error('Geocoding error:', error);
       alert('Error fetching location data');
+    });
+  }
+
+  loadGoogleMapsApi(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (typeof google === 'object' && typeof google.maps === 'object') {
+        resolve();
+      } else {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDzKjE6YGJmHyUxpO_v4fYcCRrKmKSUonA&libraries=places`;
+        script.async = true;
+        script.defer = true;
+        script.onload = () => resolve();
+        script.onerror = (error: any) => reject(error);
+        document.head.appendChild(script);
+      }
     });
   }
 }
