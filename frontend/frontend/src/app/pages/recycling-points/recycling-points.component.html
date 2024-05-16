@@ -1,10 +1,16 @@
-<google-map height="900px"
-            width="2300px"
-            [center]="center"
-            [zoom]="zoom"
-            (mapClick)="moveMap($event)"
-            (mapMousemove)="move($event)">
-</google-map>
+<div class="container">
+  <div class="controls">
+    <input type="text" placeholder="Enter your location" [(ngModel)]="userLocation" />
+    <button (click)="updateLocation()">Go</button>
+  </div>
 
-<!--<div>Latitude: {{display?.lat}}</div>-->
-<!--<div>Longitude: {{display?.lng}}</div>-->
+  <div class="map-container">
+    <google-map height="100%"
+                width="100%"
+                [center]="center"
+                [zoom]="zoom"
+                (mapClick)="moveMap($event)"
+                (mapMousemove)="move($event)">
+    </google-map>
+  </div>
+</div>

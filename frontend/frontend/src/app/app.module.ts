@@ -17,6 +17,9 @@ import {CommonModule} from "@angular/common";
 import { RecyclingPointsComponent } from './pages/recycling-points/recycling-points.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 
+import { FormsModule } from '@angular/forms';  // Importă FormsModule
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,7 @@ import {GoogleMapsModule} from "@angular/google-maps";
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     CommonModule
   ],
   providers: [

@@ -3,25 +3,44 @@ html, body, :host {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;  // Prevents any scrollbars from appearing if not necessary
+  overflow: hidden;
 }
 
-/* Fullscreen map styling */
-google-map {
-  height: 100%;
-  width: 100%;
-  display: block;  // This ensures that the map is not inline and takes full space
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* Styling for the coordinates display */
-.display-coords {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.75);
+/* Container for the map */
+.map-container {
+  flex: 1;
+  height: 70vh;
+  width: 80vw;
+  max-width: 1200px;
+  margin: 20px 0;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Styling for the controls */
+.controls {
+  margin-bottom: 10px;
+}
+
+.controls input {
+  width: 300px;
+  padding: 8px;
+  margin-right: 5px;
+}
+
+.controls button {
   padding: 8px 15px;
-  border-radius: 4px;
-  font-size: 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
