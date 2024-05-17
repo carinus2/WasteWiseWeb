@@ -19,8 +19,6 @@ const routes: Routes = [
   { path: "admin-dashboard", component: AdminComponentComponent},
   { path: "admin-settings", component: AdminSettingsComponent},
   { path: "admin/logout", component: LoginComponent},
-  { path: 'regular-users/:id', component: UserEditComponent }
-
   { path: 'regular-users/:id', component: UserEditComponent },
   { path: 'FAQ', component: FAQComponent },
   { path: 'howto', component: HowtoComponent },

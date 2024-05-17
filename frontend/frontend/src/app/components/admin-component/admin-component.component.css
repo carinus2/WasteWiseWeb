@@ -62,3 +62,86 @@
 .delete-button:hover {
     background-color: #c82333; 
 }
+/* Stilurile generale pentru p-dialog */
+:host ::ng-deep .p-dialog {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+  }
+  
+  /* Stilurile pentru formă */
+  :host ::ng-deep form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  /* Stilurile pentru fiecare div din formă */
+  :host ::ng-deep form div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Stilurile pentru label-uri */
+  :host ::ng-deep label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Stilurile pentru input-uri */
+  :host ::ng-deep input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Stilurile pentru butoane */
+  :host ::ng-deep button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Stilurile pentru butonul de anulare */
+  :host ::ng-deep button[type="button"] {
+    background-color: #f44336;
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  :host ::ng-deep button[type="button"]:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Stilurile pentru butonul de salvare */
+  :host ::ng-deep button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  :host ::ng-deep button[type="submit"]:hover {
+    background-color: #388E3C;
+  }
+  
+  /* Adăugarea unei umbre și margini la dialog */
+  :host ::ng-deep .p-dialog .ui-dialog {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Adăugarea unei margini la header */
+  :host ::ng-deep .p-dialog .ui-dialog-titlebar {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  /* Stiluri suplimentare pentru header */
+  :host ::ng-deep .p-dialog .ui-dialog-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
