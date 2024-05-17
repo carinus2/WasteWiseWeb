@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { CabDto } from '../../models/CabDto';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CabService } from '../../services/CabService';
+import { CabDto } from '../../models/CabDto';
+import { CollectorDto } from '../../models/CollectorDto';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-admin-settings',
@@ -13,44 +15,67 @@ export class AdminSettingsComponent implements OnInit {
   settingsItems!: MenuItem[];
   activeItem!: MenuItem;
   activeTab: string = '';
-
   cabs: CabDto[] = [];
+  collectors: CollectorDto[] = []; 
   displayEditModal: boolean = false;
   editCabForm!: FormGroup;
   selectedCabId!: number;
+  editUserForm!: FormGroup;
+
 
   constructor(
     private fb: FormBuilder,
-    private cabService: CabService  // Serviciu pentru gestionarea datelor
+    private cabService: CabService
   ) {}
 
   ngOnInit() {
+    this.loadCollectorsAndCabs();
     this.settingsItems = [
-      {label: 'Cabs', icon: 'pi pi-fw pi-car', command: () => { this.activeTab = 'Cabs'; this.getCabs(); }},
+      {label: 'Cabs', icon: 'pi pi-fw pi-car', command: () => { this.activeTab = 'Cabs'; this.loadCollectorsAndCabs(); }},
       {label: 'Collectors', icon: 'pi pi-fw pi-users', command: () => { this.activeTab = 'Collectors'; }},
       {label: 'Orders', icon: 'pi pi-fw pi-shopping-cart', command: () => { this.activeTab = 'Orders'; }},
       {label: 'Recyclable Products', icon: 'pi pi-fw pi-globe', command: () => { this.activeTab = 'Recyclable Products'; }}
     ];
     this.activeItem = this.settingsItems[0];
     this.activeTab = 'Cabs';
-    this.getCabs();
-    
+
     this.editCabForm = this.fb.group({
       plateNumber: ['', Validators.required],
       collectorName: ['', Validators.required]
     });
   }
 
-  getCabs() {
-    this.cabService.getCabs().subscribe(
-      (cabs: CabDto[]) => this.cabs = cabs,
-      (error: any) => console.error('Error fetching cabs:', error)
+  loadCollectors() {
+    this.cabService.getCollectors().subscribe(
+      collectors => this.collectors = collectors,
+      error => console.error('Error fetching collectors:', error)
     );
   }
+  loadCollectorsAndCabs() {
+    forkJoin({
+      collectors: this.cabService.getCollectors(),
+      cabs: this.cabService.getCabs()
+    }).subscribe(({ collectors, cabs }) => {
+      this.collectors = collectors;
+      this.cabs = cabs.map(cab => {
+        const collector = collectors.find(col => col.id === cab.collectorId);
+        return {
+          ...cab,
+          collectorName: collector ? `${collector.firstName} ${collector.lastName}` : 'Unknown'
+        };
+      });
+    }, error => {
+      console.error('Error fetching data:', error);
+    });
+  }
 
-  editCab(cab: CabDto): void {
+
+  editCab(cab: any): void {
     this.selectedCabId = cab.id;
-    this.editCabForm.patchValue(cab);
+    this.editCabForm.patchValue({
+      plateNumber: cab.plateNumber,
+      collectorName: cab.collectorName
+    });
     this.toggleModal();
   }
 
@@ -73,7 +98,7 @@ export class AdminSettingsComponent implements OnInit {
     const updatedCab: CabDto = this.editCabForm.value;
     this.cabService.editCab(this.selectedCabId, updatedCab).subscribe({
       next: () => {
-        this.getCabs();
+        this.loadCollectorsAndCabs();
         this.toggleModal();
       },
       error: (error: any) => console.error('Error updating cab:', error)
