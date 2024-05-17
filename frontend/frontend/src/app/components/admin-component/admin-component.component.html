@@ -1,0 +1,61 @@
+<div class="table-container">
+    <h2>OUR USERS</h2>
+    <p-table [value]="registrationUsers" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="email" style="width:20%">Email<p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="firstName" style="width:15%">First name<p-sortIcon field="firstName"></p-sortIcon></th>
+                <th pSortableColumn="lastName" style="width:15%">Last name<p-sortIcon field="lastName"></p-sortIcon></th>
+                <th>Telephone number</th>
+                <th pSortableColumn="homeAddress" style="width:15%">Home address<p-sortIcon field="homeAddress"></p-sortIcon></th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>{{ user.homeAddress }}</td>
+                <td>
+                    <button class="action-button edit-button" (click)="editUser(user)">Edit</button>
+                    <button class="action-button delete-button" (click)="deleteUser(user)">Delete</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog
+          header="Detaliile user-ului"
+          [(visible)]="displayEditModal"
+          [modal]="true">
+<h2>Edit User</h2>
+<form [formGroup]="editUserForm" (ngSubmit)="onSave()">
+  <div>
+    <label>Email:</label>
+    <input type="email" formControlName="email">
+  </div>
+  <div>
+    <label>First Name:</label>
+    <input type="text" formControlName="firstName">
+  </div>
+  <div>
+    <label>Last Name:</label>
+    <input type="text" formControlName="lastName">
+  </div>
+  <div>
+    <label>Phone Number:</label>
+    <input type="text" formControlName="phoneNumber">
+  </div>
+  <div>
+    <label>Home Address:</label>
+    <input type="text" formControlName="homeAddress">
+  </div>
+  <div>
+    <button type="button" (click)="onCancel()">Cancel</button>
+    <button type="submit" (click)="onSave()">Save</button>
+  </div>
+</form>
+</p-dialog>

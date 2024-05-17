@@ -9,47 +9,6 @@ body, html {
   background-color: #f0f4f8;
 }
 
-.app-introduction {
-  background-color: #ffffff; /* Lighter shade for a cleaner look */
-  padding: 60px; /* More padding for a spacious layout */
-  margin: 60px auto; /* Increase margin to center the card on the page */
-  border-radius: 8px; /* Less rounded corners for a more professional look */
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); /* Softer shadow for depth */
-  max-width: 1000px;
-  text-align: left; /* Align text to the left for better readability */
-}
-
-.app-introduction h2 {
-  color: #025f99; /* A deeper blue for a more professional tone */
-  margin-bottom: 32px;
-  font-size: 2.5rem; /* Slightly larger for importance */
-  font-weight: 600; /* Less bold for a sophisticated look */
-}
-
-.app-introduction p {
-  color: #333333;
-  line-height: 1.8;
-  font-size: 1.2rem; /* Slightly larger for readability */
-  margin-bottom: 32px;
-}
-
-.join-us-button {
-  background-color: #4c9f70; /* A more subdued green */
-  color: white;
-  padding: 16px 32px; /* Larger padding for a bigger button */
-  border-radius: 4px; /* Less rounded corners */
-  text-decoration: none;
-  font-weight: 500; /* Not too bold */
-  font-size: 1.1rem; /* Larger font size for readability */
-  transition: all 0.3s ease; /* Transition for hover effects */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); /* Subtle shadow for depth */
-}
-
-.join-us-button:hover {
-  background-color: #40805b; /* A darker shade on hover */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16); /* Slightly deeper shadow on hover */
-}
-
 
 .wave {
   display: inline-block;
@@ -90,7 +49,7 @@ body, html {
 
 .hero-section {
   position: relative;
-  background: url('/assets/header-background.jpg');
+  background: url('/assets/header-background.jpg') ;
   background-size: 100% 100%;
   text-align: center;
   padding: 8rem 0;
@@ -160,12 +119,32 @@ body, html {
 }
 
 
+
+
+.app-introduction p {
+  color: #333333;
+  line-height: 1.8;
+  font-size: 1.2rem;
+  margin-bottom: 32px;
+}
+
+.how-to-recycle p {
+  color: #333333;
+  line-height: 1.8;
+  font-size: 1.2rem;
+  margin-bottom: 32px;
+}
+
+
+
+
+
+
 .features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
-  /*align-items: start;*/
 }
 
 .feature {
@@ -205,26 +184,54 @@ body, html {
 }
 
 
-@media (max-width: 768px) {
 
 
-  .hero-section h1 {
-    font-size: 2rem;
-  }
 
-  .hero-section p {
-    font-size: 1rem;
-  }
 
-  .hero-content {
-    animation: none;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-  }
-
-  .feature {
-    margin-bottom: 20px;
-  }
+.content-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
+
+
+.app-introduction, .how-to-recycle {
+  flex: 1;
+  margin: 0 10px;
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.app-introduction h2, .how-to-recycle h2 {
+  color: #02475e;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+
+.join-us-button, .explore-button {
+  background-color: #356859;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+
+.join-us-button:hover, .explore-button:hover {
+  background-color: #2a4858;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.app-introduction:hover, .how-to-recycle:hover {
+  background-color: #e6e6e6;
+}
+
+

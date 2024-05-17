@@ -1,9 +1,6 @@
-
-
 <div class="navbar">
   <div class="navbar-logo">
-    <!-- Update the href to the path of your intro page -->
-    <a href="/intro">
+    <a routerLink="/intro">
       <img src="../../../assets/Logo.png" alt="Logo">
     </a>
   </div>
@@ -16,11 +13,13 @@
     <div class="navbar-logo">
       <img src="assets/Logo.png" alt="Logo">
     </div>
-    <ul class="navbar-menu">
+    <ul class="navbar-menu" *ngIf="!isAdminPage">
       <li><a routerLink="/signup" class="navbar-button get-started-btn">Get Started</a></li>
-      <li><a href="team" class="navbar-button">Team</a></li>
+      <li><a routerLink="/team" class="navbar-button">Team</a></li>
+    </ul>
+    <ul class="navbar-menu" *ngIf="isAdminPage">
+      <li><a routerLink="/admin-dashboard" class="navbar-button">Dashboard</a></li>
+      <li><a routerLink="/admin-settings" class="navbar-button">Settings</a></li>
+      <li><a routerLink="/admin/logout" class="navbar-button">Logout</a></li>
     </ul>
   </div>
-
-
-

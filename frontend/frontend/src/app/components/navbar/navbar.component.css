@@ -2,6 +2,7 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box; /* Ensures padding and borders are included in width/height calculations */
 }
 
 .navbar {
@@ -13,8 +14,10 @@ body, html {
   padding: 0 20px;
   position: fixed;
   top: 0;
+  left: 0; /* Ensure it starts from the very left edge */
+  right: 0; /* Ensure it extends to the right edge */
   width: 100%;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .navbar-logo {
@@ -28,13 +31,12 @@ body, html {
   width: auto;
 }
 
-
 .navbar-menu {
   list-style-type: none;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   padding-left: 20px;
+  margin: 0; /* Remove default margin */
 }
 
 .navbar-menu li {
@@ -47,17 +49,15 @@ body, html {
   transition: color 0.3s;
 }
 
-
 .navbar-menu li a:hover,
 .navbar-menu li .team-btn:hover,
 .navbar-menu li .get-started-btn:hover {
   color: #fff;
 }
 
-
 .navbar-button {
   padding: 10px 20px;
-  background-color: #fff;
+  background-color: #4CAF50; /* Color adjusted for contrast and visibility */
   color: white;
   text-decoration: none;
   border: none;
@@ -67,9 +67,11 @@ body, html {
 }
 
 .navbar-button:hover {
-  background-color: #d3d3d3;
+  background-color: #367C39; /* Darker shade for hover state */
 }
 
 .main-content {
-  padding-top: 80px;
+  padding-top: 80px; /* Ensure content starts below the navbar */
+  padding-bottom: 50px;
+  min-height: 100vh;
 }

@@ -1,0 +1,120 @@
+:host ::ng-deep .p-tabview .p-tabview-nav {
+    margin-top: 100px;
+    border-bottom: 1px solid #d0d0d0; /* Light gray border under the tabs */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li {
+    border: none; /* Removes borders from tabs */
+    background-color: transparent; /* Clear background for inactive tabs */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight {
+    background-color: white; /* White background for the active tab */
+    border-bottom: 3px solid blue; /* Blue underline for the active tab */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li a {
+    color: #333; /* Dark grey text for all tabs */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-panels {
+    background-color: white; /* White background for the content area */
+    padding: 20px; /* Padding around the content */
+    border: none; /* Removes border around content area */
+}
+:host ::ng-deep .p-tabview {
+        width: 80%; /* Adjusts width to 80% of the parent container */
+    margin: 20px auto; /* Centers the tab view and adds some vertical space */
+    font-size: 16px; /* Increases the font size for better readability */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li {
+    padding: 10px 20px; /* Increases padding to make tabs larger */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li a {
+    padding: 10px 20px; /* Further increases padding around the links */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-panels {
+    background-color: white;
+    padding: 20px;
+    border: none;
+}
+
+
+:host ::ng-deep .table-container {
+    margin: 40px auto;
+    width: 95%; 
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); 
+    padding: 35px;
+    background: white;
+    border-radius: 8px; 
+    text-align: left;
+}
+
+
+:host ::ng-deep .p-datatable {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+
+:host ::ng-deep .p-datatable th,
+.p-datatable td {
+    text-align: left;
+    padding: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.p-datatable thead th {
+    background-color: #5A6268;
+    color: white;
+    font-weight: 600;
+ 
+
+}
+
+
+:host ::ng-deep .p-datatable tbody tr:nth-child(odd) {
+    background-color: #f7f7f7; 
+}
+
+
+:host ::ng-deep .p-datatable tbody tr:hover {
+    background-color: #e9ecef; 
+}
+
+
+:host ::ng-deep .action-button {
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+
+:host ::ng-deep .edit-button {
+    background-color: #17a2b8; 
+}
+
+
+:host ::ng-deep .edit-button:hover {
+    background-color: #138496;
+}
+
+
+:host ::ng-deep .delete-button {
+    background-color: #dc3545; 
+}
+
+
+:host ::ng-deep .delete-button:hover {
+    background-color: #c82333; 
+}

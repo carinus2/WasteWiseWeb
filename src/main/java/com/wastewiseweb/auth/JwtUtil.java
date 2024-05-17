@@ -17,6 +17,7 @@ import java.security.Key;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
@@ -24,28 +25,30 @@ public class JwtUtil {
 
 
     @Value("${secret.key}")
-    private String SECRET_KEY;
+    private final String SECRET_KEY = "ThisIsTheLongestKeyEverOnThePlanetISwear!";
 
-    public String generateJwtToken(final Authentication authentication){
-        try {
-            var details = (UserDetails) authentication.getPrincipal();
-            var roles = details.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(","));
+    public String generateJwtToken(final Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-            return Jwts.builder()
-                    .setSubject(details.getUsername())
-                    .setIssuedAt(Date.from(Instant.now()))
-                    .setExpiration(Date.from(Instant.now().plus(12, ChronoUnit.HOURS)))
-                    .signWith(getJwtKey())
-                    .compact();
-        } catch (Exception e){
-            return null;
-        }
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
+        return Jwts.builder()
+                .setSubject(userDetails.getUsername())
+                .claim("roles", roles)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 12 * 60 * 60 * 1000)) // 12 ore
+                .signWith(getJwtKey())
+                .compact();
     }
+
+
 
     public boolean validateJwtToken(final String jwt) {
         try {
             return getBuilder().isSigned(jwt);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("JWT Exception");
         }
         return false;
@@ -55,8 +58,9 @@ public class JwtUtil {
         return Jwts.parser().setSigningKey(getJwtKey()).build();
     }
 
-    private Key getJwtKey(){
-        return new SecretKeySpec(SECRET_KEY.getBytes(), SignatureAlgorithm.HS256.getJcaName());
+    private Key getJwtKey() {
+        byte[] keyBytes = SECRET_KEY.getBytes();
+        return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS256.getJcaName());
     }
 
     public Claims getClaims(String jwt){

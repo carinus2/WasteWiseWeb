@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
@@ -29,29 +28,29 @@ public class SecurityConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder); // Asigurați-vă că acesta este encoderul pe care îl folosiți pentru a codifica parolele.
-    }
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        var res = http
+        http
                 .cors().and().csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/orders/**", "/api/payments/**").authenticated()
-                .requestMatchers("/api/cabs/**").hasAnyRole("ADMIN", "COLLECTOR")
-                .requestMatchers("/api/recyclable-items/**").hasRole("ADMIN")
+                .requestMatchers("/api/regular-users/**").permitAll()
+                .requestMatchers("/api/regular-users/{id}").permitAll()
+                .requestMatchers("/api/cabs/**").permitAll()
+                .requestMatchers("/api/cabs/{id}").permitAll()
+                .requestMatchers("/api/collectors/**").permitAll()
+                .requestMatchers("/api/collectors/{id}").permitAll()
+                .requestMatchers("/api/recyclable-items/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers("/api/regular-users").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                .and()
+                .addFilterBefore(authenticationJwtTokenFilter(), BasicAuthenticationFilter.class);
 
-        http.addFilterBefore(authenticationJwtTokenFilter(), BasicAuthenticationFilter.class);
-        return res.and().build();
+        return http.build();
     }
 
     @Bean
@@ -62,6 +61,13 @@ public class SecurityConfig {
     @Bean
     public AuthorizationTokenFilter authenticationJwtTokenFilter() {
         return new AuthorizationTokenFilter();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder);
     }
 
 }

@@ -1,4 +1,5 @@
 export interface RegistrationUserDto{
+    id: number;
     email: string;
     password: string;
     phoneNumber: string;
