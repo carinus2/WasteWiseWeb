@@ -39,6 +39,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/regular-users/{id}").permitAll()
                 .requestMatchers("/api/cabs/**").permitAll()
                 .requestMatchers("/api/cabs/{id}").permitAll()
+                .requestMatchers("/api/collectors/**").permitAll()
+                .requestMatchers("/api/collectors/{id}").permitAll()
                 .requestMatchers("/api/recyclable-items/**").hasAuthority("ROLE_ADMIN")
                 .requestMatchers("/api/regular-users").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
