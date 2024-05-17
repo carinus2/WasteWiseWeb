@@ -4,4 +4,5 @@ export interface CollectorDto{
     lastName: string;
     phoneNumber: string;
     email: string;
+    cabId: number;
 }
