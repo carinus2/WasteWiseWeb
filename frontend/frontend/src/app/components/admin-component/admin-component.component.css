@@ -1,10 +1,10 @@
 .table-container {
     margin: 40px auto;
-    width: 95%; 
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); 
+    width: 95%;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     padding: 35px;
     background: white;
-    border-radius: 8px; 
+    border-radius: 8px;
     text-align: left;
 }
 
@@ -31,11 +31,11 @@
 }
 
 .p-datatable tbody tr:nth-child(odd) {
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
 }
 
 .p-datatable tbody tr:hover {
-    background-color: #e9ecef; 
+    background-color: #e9ecef;
 }
 
 .action-button {
@@ -50,7 +50,7 @@
 }
 
 .edit-button {
-    background-color: #17a2b8; 
+    background-color: #17a2b8;
 }
 
 .edit-button:hover {
@@ -58,9 +58,9 @@
 }
 
 .delete-button {
-    background-color: #dc3545; 
+    background-color: #dc3545;
 }
 
 .delete-button:hover {
-    background-color: #c82333; 
+    background-color: #c82333;
 }
