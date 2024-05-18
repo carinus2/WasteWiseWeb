@@ -5,7 +5,7 @@
             <p-table [value]="cabs" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>ID</th>
+                        <th pSortableColumn="id">ID<p-sortIcon field="plateNumber"></p-sortIcon></th>
                         <th pSortableColumn="plateNumber">Plate Number<p-sortIcon field="plateNumber"></p-sortIcon></th>
                         <th>Collector Name</th>
                         <th>Actions</th>

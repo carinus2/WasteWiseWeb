@@ -12,7 +12,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-collapse: collapse;
     width: 100%;
-
 }
 
 .p-datatable th,
@@ -26,8 +25,6 @@
     background-color: #5A6268;
     color: white;
     font-weight: 600;
-
-
 }
 
 .p-datatable tbody tr:nth-child(odd) {
@@ -63,4 +60,92 @@
 
 .delete-button:hover {
     background-color: #c82333;
+}
+
+/* General styling for the dialog */
+:host ::ng-deep .p-dialog .p-dialog-header {
+    background-color: #f5f5f5; /* Light grey background for header */
+    border-bottom: 1px solid #d0d0d0; /* Subtle border under header */
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-content {
+    padding: 20px; /* Padding for content area */
+    background-color: white;
+    width: 500px; /* Increase the width of the dialog */
+}
+
+:host ::ng-deep .p-dialog .p-dialog-footer {
+    border-top: 1px solid #d0d0d0; /* Subtle border above footer */
+    padding: 15px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 5px; /* Space between buttons */
+}
+
+/* Styling for the form elements */
+:host ::ng-deep .p-dialog form {
+    display: flex;
+    flex-direction: column;
+}
+
+:host ::ng-deep .p-dialog form > div {
+    margin-bottom: 15px;
+}
+
+:host ::ng-deep .p-dialog label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+:host ::ng-deep .p-dialog input[type="text"],
+:host ::ng-deep .p-dialog input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+:host ::ng-deep .p-dialog input[type="text"]:focus,
+:host ::ng-deep .p-dialog input[type="email"]:focus {
+    border-color: #007bff; /* Border color on focus */
+    outline: none;
+}
+
+/* Styling for buttons */
+:host ::ng-deep .p-dialog button {
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+:host ::ng-deep .p-dialog button[type="button"] {
+    background-color: #6c757d; /* Cancel button color */
+    color: white;
+}
+
+:host ::ng-deep .p-dialog button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+:host ::ng-deep .p-dialog button[type="submit"] {
+    background-color: #007bff; /* Save button color */
+    color: white;
+}
+
+:host ::ng-deep .p-dialog button[type="submit"]:hover {
+    background-color: #0056b3;
 }

@@ -46,8 +46,15 @@ export class AdminComponentComponent implements OnInit {
 
   editUser(user: RegistrationUserDto): void {
     this.selectedUserId = user.id;
+    this.editUserForm.patchValue({
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phoneNumber: user.phoneNumber,
+        homeAddress: user.homeAddress
+    });
     this.toggleModal();
-  }
+}
 
   deleteUser(user: RegistrationUserDto): void {
     if (confirm('Are you sure you want to delete this user?')) {
@@ -63,21 +70,6 @@ export class AdminComponentComponent implements OnInit {
       });
     }
   }
-
-  deleteUser(user: RegistrationUserDto): void {
-    if (confirm('Are you sure you want to delete this user?')) {
-      this.userService.deleteUser(user.id).subscribe({
-        next: () => {
-          this.registrationUsers = this.registrationUsers.filter(u => u.id !== user.id);
-          alert('User deleted successfully');
-        },
-        error: (error) => {
-          console.error('Error deleting user:', error);
-          alert('Failed to delete user');
-        }
-      });
-    }
-  }  
 
   onCancel(){
     this.toggleModal();
@@ -104,3 +96,4 @@ export class AdminComponentComponent implements OnInit {
     this.displayEditModal = !this.displayEditModal;
   }
 }
+

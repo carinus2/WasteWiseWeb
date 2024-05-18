@@ -10,8 +10,8 @@ import {TeamComponent} from "./pages/team/team.component";
 import {FAQComponent} from "./pages/faq/faq.component";
 import {HowtoComponent} from "./pages/howto/howto.component";
 import {RecyclingPointsComponent} from "./pages/recycling-points/recycling-points.component";
-import {RequestCollectorComponent} from "./pages/request-collector/request-collector.component";
 
+import {RequestCollectorComponent} from "./pages/request-collector/request-collector.component";
 const routes: Routes = [
   { path: 'intro', component: IntroComponent },
   { path: 'login', component: LoginComponent },

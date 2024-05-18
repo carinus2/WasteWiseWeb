@@ -12,7 +12,6 @@ import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
 import { AdminComponentComponent } from './components/admin-component/admin-component.component';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
-import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
@@ -41,7 +40,6 @@ import { BadgeModule } from 'primeng/badge';
     TeamComponent,
     AdminComponentComponent,
     AdminSettingsComponent,
-    UserEditComponent,
     TeamComponent,
     FAQComponent,
     HowtoComponent,
