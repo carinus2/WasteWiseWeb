@@ -7,6 +7,7 @@ import {TeamComponent} from "./pages/team/team.component";
 import {FAQComponent} from "./pages/faq/faq.component";
 import {HowtoComponent} from "./pages/howto/howto.component";
 import {RecyclingPointsComponent} from "./pages/recycling-points/recycling-points.component";
+import {RequestCollectorComponent} from "./pages/request-collector/request-collector.component";
 
 const routes: Routes = [
   { path: 'intro', component: IntroComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'FAQ', component: FAQComponent },
   { path: 'howto', component: HowtoComponent },
   { path: 'recycling-points', component: RecyclingPointsComponent },
+  { path: 'request-collector', component:RequestCollectorComponent}
 ];
 
 @NgModule({

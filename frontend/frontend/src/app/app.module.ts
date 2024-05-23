@@ -12,12 +12,12 @@ import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { HowtoComponent } from './pages/howto/howto.component';
-// import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';
 import {CommonModule} from "@angular/common";
 import { RecyclingPointsComponent } from './pages/recycling-points/recycling-points.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';  // Importă FormsModule
+import { FormsModule } from '@angular/forms';
+import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';  // Importă FormsModule
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';  // Importă FormsModule
     FAQComponent,
     HowtoComponent,
     RecyclingPointsComponent,
-    // RequestCollectorComponent,
+    RequestCollectorComponent,
   ],
   imports: [
     BrowserModule,
