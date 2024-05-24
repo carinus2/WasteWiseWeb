@@ -14,7 +14,7 @@
                 <ng-template pTemplate="body" let-cab>
                     <tr>
                         <td>{{ cab.id }}</td>
-                        <td>{{ cab.plateNumber }}</td>
+                        <td>{{ cab.plateNumber }}</td> 
                         <td>{{ cab.collectorName }}</td>
                         <td>
                             <button class="action-button edit-button" (click)="editCab(cab)">Edit</button>
@@ -26,7 +26,34 @@
         </div>
     </p-tabPanel>
     <p-tabPanel header="Orders">
-        <p>Details about Orders</p>
+        <div class="table-container">
+            <h2>Orders</h2>
+            <p-table [value]="orders" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>ID</th>
+                  <th>Type</th>
+                  <th>Regular User ID</th>
+                  <th>Collector ID</th>
+                  <th>Payment ID</th>
+                  <th>Actions</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-order>
+                <tr>
+                  <td>{{ order.id }}</td>
+                  <td>{{ order.type }}</td>
+                  <td>{{ order.regularUserId }}</td>
+                  <td>{{ order.collectorId }}</td>
+                  <td>{{ order.paymentId }}</td>
+                  <td>
+                    <button class="action-button edit-button" (click)="editOrder(order)">Edit</button>
+                    <button class="action-button delete-button" (click)="deleteOrder(order)">Delete</button>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
     </p-tabPanel>
     <p-tabPanel header="Collectors">
         <p>Details about Collectors</p>
@@ -37,7 +64,7 @@
 </p-tabView>
 
 <p-dialog
-    header="Detaliile cab-ului"
+    header="Cab Details"
     [(visible)]="displayEditModal"
     [modal]="true">
     <h2>Edit Cab</h2>
@@ -47,12 +74,31 @@
             <input type="text" formControlName="plateNumber">
         </div>
         <div>
-            <label>Collector ID:</label>
+            <label>Collector Name:</label>
             <input type="text" formControlName="collectorName">
         </div>
         <div>
             <button type="button" (click)="onCancel()">Cancel</button>
             <button type="submit" (click)="onSave()">Save</button>
+        </div>
+    </form>
+</p-dialog>
+
+<p-dialog
+    header="Order Details"
+    [(visible)]="displayEditOrderModal"
+    [modal]="true">
+    <h2>Edit Order</h2>
+    <form [formGroup]="editOrderForm" (ngSubmit)="onSaveOrder()">
+        <div>
+            <label>Type:</label>
+            <select formControlName="type">
+                <option *ngFor="let type of statusTypes" [value]="type">{{ getStatusDisplayName(type) }}</option>
+            </select>        
+        </div>
+        <div>
+            <button type="button" (click)="onCancelOrder()">Cancel</button>
+            <button type="submit" (click)="onSaveOrder()">Save</button>
         </div>
     </form>
 </p-dialog>

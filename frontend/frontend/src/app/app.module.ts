@@ -48,7 +48,7 @@ import { BadgeModule } from 'primeng/badge';
     TeamComponent,
     AdminComponentComponent,
     AdminSettingsComponent,
-    UserEditComponent
+
   ],
   imports: [
     BrowserModule,
@@ -68,6 +68,8 @@ import { BadgeModule } from 'primeng/badge';
     FormsModule,
     GoogleMapsModule,
     CommonModule,
+    ReactiveFormsModule,
+    TableModule,
     DialogModule,
     TabMenuModule,
     TabViewModule,
