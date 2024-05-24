@@ -1,0 +1,90 @@
+/* payment-method.component.css */
+.payment-method-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f1f1f1; /* Light background color for the page */
+}
+
+.payment-method-form {
+  max-width: 700px;
+  margin: 20px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.payment-method-form h2 {
+  color: #0056b3;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.payment-method-form p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.payment-method-form .payment-icons {
+  margin: 20px 0;
+  font-size: 48px;
+  color: #28a745; /* Initial color for cash icon */
+}
+
+.payment-method-form .payment-icons .fa-credit-card {
+  margin-left: 20px;
+  color: #007bff; /* Color for card icon */
+}
+
+.payment-method-form .button {
+  width: 80%;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 18px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.payment-method-form .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.payment-method-form .button:focus {
+  outline: none;
+}
+
+.payment-method-form .pay-cash {
+  background-color: #28a745; /* Green for cash */
+}
+
+.payment-method-form .pay-cash:hover {
+  background-color: #218838;
+}
+
+.payment-method-form .pay-card {
+  background-color: #007bff; /* Blue for card */
+}
+
+.payment-method-form .pay-card:hover {
+  background-color: #0056b3;
+}
+
+/* Smaller and nicely placed 'Go Back' button */
+.payment-method-form .go-back-button {
+  width: 40%; /* Smaller width */
+  padding: 10px; /* Smaller padding */
+  margin: 10px 5%; /* Center within available space */
+  background-color: #6c757d; /* Gray for go back */
+}
+
+.payment-method-form .go-back-button:hover {
+  background-color: #5a6268;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Router} from "@angular/router";
 
 
 interface Item {
@@ -82,10 +83,9 @@ export class RequestCollectorComponent {
         { name: 'Printers and Scanners', price: 7.00, quantity: 0, description: 'Office electronics.' }
       ]
     }
-    // Additional categories go here
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   calculateTotalPrice(): number {
     return this.categories.reduce((total: number, category) => {
@@ -95,7 +95,8 @@ export class RequestCollectorComponent {
 
 
   submitRequest(): void {
-    alert(`Collection request submitted for location: ${this.userLocation} with total price: ${this.calculateTotalPrice()} RON`);
+    // Navigate to the place-order page with the current selected items
+    this.router.navigate(['/place-order'], { state: { categories: this.categories } });
   }
 
   getCurrentLocation(): void {

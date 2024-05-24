@@ -1,0 +1,14 @@
+<!-- payment-method.component.html -->
+<div class="payment-method-container">
+  <div class="payment-method-form">
+    <h2>Select Payment Method</h2>
+    <p>Please choose your preferred payment method to proceed with your order.</p>
+    <div class="payment-icons">
+      <i class="fa fa-money-bill-wave"></i>
+      <i class="fa fa-credit-card"></i>
+    </div>
+    <button (click)="selectPaymentMethod('cash')" class="button pay-cash">Pay with Cash</button>
+    <button (click)="selectPaymentMethod('card')" class="button pay-card">Pay with Card</button>
+<!--    <button (click)="goBack()" class="button go-back-button">Go Back</button>-->
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="collector-form">
+
+</div><div class="collector-form">
+  <h2>Confirm Your Order</h2>
+  <div *ngFor="let category of categories; let i = index">
+    <h3 class="category-header">{{ category.name }}</h3>
+    <div *ngFor="let item of category.items">
+      <p class="item-description" *ngIf="item.quantity > 0">
+        {{ item.name }}: {{ item.quantity }} x {{ item.price }} RON = {{ item.quantity * item.price }} RON
+      </p>
+    </div>
+    <div *ngIf="i === categories.length - 1">
+      <h3 class="total-price">Total Price: {{ calculateTotalPrice() }} RON</h3>
+    </div>
+  </div>
+  <div class="buttons-container">
+    <button (click)="goBack()" class="button go-back-button">Go Back</button>
+    <button (click)="placeOrder()" class="button place-order-button">Place Order</button>
+  </div>
+
+</div>
+
