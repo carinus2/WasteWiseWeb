@@ -228,7 +228,9 @@
 }
 
 :host ::ng-deep .p-dialog select,
-:host ::ng-deep .p-dialog input[type="text"] {
+:host ::ng-deep .p-dialog input[type="text"],
+:host ::ng-deep .p-dialog input[type="email"],
+:host ::ng-deep .p-dialog input[type="number"] {
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -239,6 +241,8 @@
 }
 
 :host ::ng-deep .p-dialog input[type="text"]:focus,
+:host ::ng-deep .p-dialog input[type="email"]:focus,
+:host ::ng-deep .p-dialog input[type="number"]:focus,
 :host ::ng-deep .p-dialog select:focus {
     border-color: #007bff; /* Border color on focus */
     outline: none;

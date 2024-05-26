@@ -56,7 +56,36 @@
           </div>
     </p-tabPanel>
     <p-tabPanel header="Collectors">
-        <p>Details about Collectors</p>
+        <div class="table-container">
+            <h2>Collectors</h2>
+            <p-table [value]="collectors" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Cab ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-collector>
+                    <tr>
+                        <td>{{ collector.id }}</td>
+                        <td>{{ collector.firstName }}</td>
+                        <td>{{ collector.lastName }}</td>
+                        <td>{{ collector.phoneNumber }}</td>
+                        <td>{{ collector.email }}</td>
+                        <td>{{ collector.cabID }}</td>
+                        <td>
+                            <button class="action-button edit-button" (click)="editCollector(collector)">Edit</button>
+                            <button class="action-button delete-button" (click)="deleteCollector(collector)">Delete</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
     </p-tabPanel>
     <p-tabPanel header="Recyclable Products">
         <p>Details about Recyclable Products</p>
@@ -68,7 +97,7 @@
     [(visible)]="displayEditModal"
     [modal]="true">
     <h2>Edit Cab</h2>
-    <form [formGroup]="editCabForm" (ngSubmit)="onSave()">
+    <form [formGroup]="editCabForm" (ngSubmit)="onSaveCab()">
         <div>
             <label>Plate Number:</label>
             <input type="text" formControlName="plateNumber">
@@ -78,8 +107,8 @@
             <input type="text" formControlName="collectorName">
         </div>
         <div>
-            <button type="button" (click)="onCancel()">Cancel</button>
-            <button type="submit" (click)="onSave()">Save</button>
+            <button type="button" (click)="onCancelCab()">Cancel</button>
+            <button type="submit" (click)="onSaveCab()">Save</button>
         </div>
     </form>
 </p-dialog>
@@ -99,6 +128,39 @@
         <div>
             <button type="button" (click)="onCancelOrder()">Cancel</button>
             <button type="submit" (click)="onSaveOrder()">Save</button>
+        </div>
+    </form>
+</p-dialog>
+
+<p-dialog
+    header="Collector Details"
+    [(visible)]="displayEditCollectorModal"
+    [modal]="true">
+    <h2>Edit Collector</h2>
+    <form [formGroup]="editCollectorForm" (ngSubmit)="onSaveCollector()">
+        <div>
+            <label>First Name:</label>
+            <input type="text" formControlName="firstName">
+        </div>
+        <div>
+            <label>Last Name:</label>
+            <input type="text" formControlName="lastName">
+        </div>
+        <div>
+            <label>Phone Number:</label>
+            <input type="text" formControlName="phoneNumber">
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" formControlName="email">
+        </div>
+        <div>
+            <label>Cab ID:</label>
+            <input type="number" formControlName="cabID">
+        </div>
+        <div>
+            <button type="button" (click)="onCancelCollector()">Cancel</button>
+            <button type="submit" (click)="onSaveCollector()">Save</button>
         </div>
     </form>
 </p-dialog>

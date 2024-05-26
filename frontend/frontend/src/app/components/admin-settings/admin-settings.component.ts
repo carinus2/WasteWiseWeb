@@ -23,23 +23,27 @@ export class AdminSettingsComponent implements OnInit {
   orders: OrderDto[] = [];
   displayEditModal: boolean = false;
   displayEditOrderModal: boolean = false;
+  displayEditCollectorModal: boolean = false;
   editCabForm!: FormGroup;
   editOrderForm!: FormGroup;
-  selectedCabId!: number;
+  editCollectorForm!: FormGroup;
+  selectedcabID!: number;
   selectedOrderId!: number;
+  selectedCollectorId!: number;
   statusTypes = Object.values(StatusType); // Array of status types
 
   constructor(
     private fb: FormBuilder,
     private cabService: CabService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private collectorService: CollectorService
   ) {}
 
   ngOnInit() {
     this.loadCollectorsAndCabs();
     this.settingsItems = [
       {label: 'Cabs', icon: 'pi pi-fw pi-car', command: () => { this.activeTab = 'Cabs'; this.loadCollectorsAndCabs(); }},
-      {label: 'Collectors', icon: 'pi pi-fw pi-users', command: () => { this.activeTab = 'Collectors'; }},
+      {label: 'Collectors', icon: 'pi pi-fw pi-users', command: () => { this.activeTab = 'Collectors'; this.loadCollectors(); }},
       {label: 'Orders', icon: 'pi pi-fw pi-shopping-cart', command: () => { this.activeTab = 'Orders'; this.loadOrders(); }},
       {label: 'Recyclable Products', icon: 'pi pi-fw pi-globe', command: () => { this.activeTab = 'Recyclable Products'; }}
     ];
@@ -56,6 +60,14 @@ export class AdminSettingsComponent implements OnInit {
       regularUserId: ['', Validators.required],
       collectorId: ['', Validators.required],
       paymentId: ['', Validators.required]
+    });
+
+    this.editCollectorForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      cabID: ['', Validators.required]
     });
 
     this.loadOrders();
@@ -80,12 +92,21 @@ export class AdminSettingsComponent implements OnInit {
     });
   }
 
+  loadCollectors() {
+    this.collectorService.getCollectors().subscribe(
+      collectors => {
+        this.collectors = collectors;
+      },
+      error => {
+        console.error('Error fetching collectors:', error);
+      }
+    );
+  }
+
   loadOrders() {
-    console.log('loadOrders called');
     this.orderService.getOrders().subscribe(
       orders => {
         this.orders = orders;
-        console.log('Orders loaded:', this.orders);
       },
       error => {
         console.error('Error fetching orders:', error);
@@ -153,7 +174,7 @@ export class AdminSettingsComponent implements OnInit {
   }
 
   editCab(cab: any): void {
-    this.selectedCabId = cab.id;
+    this.selectedcabID = cab.id;
     this.editCabForm.patchValue({
       plateNumber: cab.plateNumber,
       collectorName: cab.collectorName
@@ -178,7 +199,7 @@ export class AdminSettingsComponent implements OnInit {
 
   onSaveCab() {
     const updatedCab: CabDto = this.editCabForm.value;
-    this.cabService.editCab(this.selectedCabId, updatedCab).subscribe({
+    this.cabService.editCab(this.selectedcabID, updatedCab).subscribe({
       next: () => {
         this.loadCollectorsAndCabs();
         this.toggleCabModal();
@@ -193,6 +214,52 @@ export class AdminSettingsComponent implements OnInit {
 
   toggleCabModal() {
     this.displayEditModal = !this.displayEditModal;
+  }
+
+  editCollector(collector: CollectorDto): void {
+    this.selectedCollectorId = collector.id;
+    this.editCollectorForm.patchValue({
+      firstName: collector.firstName,
+      lastName: collector.lastName,
+      phoneNumber: collector.phoneNumber,
+      email: collector.email,
+      cabID: collector.cabID
+    });
+    this.toggleCollectorModal();
+  }
+
+  deleteCollector(collector: CollectorDto): void {
+    if (confirm('Are you sure you want to delete this collector?')) {
+      this.collectorService.deleteCollector(collector.id).subscribe({
+        next: () => {
+          this.collectors = this.collectors.filter(c => c.id !== collector.id);
+          alert('Collector deleted successfully');
+        },
+        error: (error: any) => {
+          console.error('Error deleting collector:', error);
+          alert('Failed to delete collector');
+        }
+      });
+    }
+  }
+
+  onSaveCollector() {
+    const updatedCollector: CollectorDto = this.editCollectorForm.value;
+    this.collectorService.editCollector(this.selectedCollectorId, updatedCollector).subscribe({
+      next: () => {
+        this.loadCollectors();
+        this.toggleCollectorModal();
+      },
+      error: (error: any) => console.error('Error updating collector:', error)
+    });
+  }
+
+  onCancelCollector() {
+    this.toggleCollectorModal();
+  }
+
+  toggleCollectorModal() {
+    this.displayEditCollectorModal = !this.displayEditCollectorModal;
   }
 }
 
