@@ -12,6 +12,7 @@ import com.wastewiseweb.repository.OrderRepository;
 import com.wastewiseweb.repository.PaymentRepository;
 import com.wastewiseweb.repository.RegularUserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -92,5 +93,23 @@ public class OrderService {
         }
         return paymentRepository.findById(paymentId)
                 .orElseThrow(() -> new EntityNotFoundException("Payment not found with ID: " + paymentId));
+    }
+
+    @Transactional
+    public OrderEntity createOrder(OrderEntity orderRequest) {
+        OrderEntity order = new OrderEntity();
+        order.setCollector(orderRequest.getCollector());
+        order.setRegularUser(orderRequest.getRegularUser());
+        order.setPayment(orderRequest.getPayment());
+
+        OrderEntity savedOrder = orderRepository.save(order);
+
+        PaymentEntity payment = new PaymentEntity();
+        payment.setId(savedOrder.getId());
+        payment.setPaymentMethod(orderRequest.getPayment().getPaymentMethod());
+        payment.setAmount(orderRequest.getPayment().getAmount());
+
+        paymentRepository.save(payment);
+        return savedOrder;
     }
 }

@@ -1,6 +1,8 @@
 package com.wastewiseweb.api;
 
+import com.wastewiseweb.Transformer;
 import com.wastewiseweb.dto.OrderDto;
+import com.wastewiseweb.entity.OrderEntity;
 import com.wastewiseweb.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,9 +16,10 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
-
-    public OrderController(OrderService orderService) {
+    private final Transformer transformer;
+    public OrderController(OrderService orderService, Transformer transformer) {
         this.orderService = orderService;
+        this.transformer = transformer;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,4 +43,17 @@ public class OrderController {
         orderService.deleteOrder(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping
+    public ResponseEntity<?> createOrder(@RequestBody OrderDto orderRequest) {
+        try {
+            OrderEntity orderEntity = transformer.fromDto(orderRequest);
+            OrderEntity savedOrder = orderService.createOrder(orderEntity);
+            OrderDto savedOrderDto = transformer.toDto(savedOrder);
+            return ResponseEntity.ok(savedOrderDto);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
 }

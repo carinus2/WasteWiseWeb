@@ -15,6 +15,7 @@ import {RequestCollectorComponent} from "./pages/request-collector/request-colle
 import { PlaceOrderComponent } from './pages/place-order/place-order.component';
 import { PaymentMethodComponent } from './pages/payment-method/payment-method.component';
 import { ConfirmationService } from 'primeng/api';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 const routes: Routes = [
   { path: 'intro', component: IntroComponent },
   { path: 'login', component: LoginComponent },
@@ -27,11 +28,12 @@ const routes: Routes = [
   { path: 'howto', component: HowtoComponent },
   { path: 'recycling-points', component: RecyclingPointsComponent },
   { path: 'request-collector', component:RequestCollectorComponent},
-  { path: "place-order", component: PlaceOrderComponent},
+  { path: "orders", component: PlaceOrderComponent},
   { path: "payment-method", component: PaymentMethodComponent},
   // { path: "confirmation", component:ConfirmationService }
   { path: 'regular-users/:id', component: UserEditComponent },
-  { path: 'recycling-points', component: RecyclingPointsComponent }
+  { path: 'recycling-points', component: RecyclingPointsComponent },
+  { path: 'forbidden', component: ForbiddenComponent}
 ];
 
 @NgModule({

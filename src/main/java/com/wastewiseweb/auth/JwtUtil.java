@@ -33,6 +33,7 @@ public class JwtUtil {
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
+        roles.add("ROLE_USER");
 
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
@@ -43,7 +44,23 @@ public class JwtUtil {
                 .compact();
     }
 
+    public String generateAdminJwtToken(final Authentication authentication) {
 
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+        roles.add("ROLE_ADMIN");
+
+        return Jwts.builder()
+                .setSubject(userDetails.getUsername())
+                .claim("roles", roles)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 12 * 60 * 60 * 1000)) // 12 ore
+                .signWith(getJwtKey())
+                .compact();
+    }
 
     public boolean validateJwtToken(final String jwt) {
         try {

@@ -94,8 +94,8 @@ export class RequestCollectorComponent {
   }
 
   submitRequest(): void {
-    // Navigate to the place-order page with the current selected items
-    this.router.navigate(['/place-order'], { state: { categories: this.categories } });
+    const amount = this.calculateTotalPrice();
+    localStorage.setItem('amount', amount.toString());
+    this.router.navigate(['/orders'], { state: { categories: this.categories } });
   }
-
 }

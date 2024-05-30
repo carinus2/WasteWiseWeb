@@ -45,7 +45,7 @@ isAdminPage: boolean = false;
     this.authService.signUp(user).subscribe({
       next: (response) => {
         console.log('SignUp successful, response:', response);
-        this.router.navigate(['/intro']).then(success => {
+        this.router.navigate(['/login']).then(success => {
           if (!success) {
             console.error('Redirection to /intro failed');
           }
