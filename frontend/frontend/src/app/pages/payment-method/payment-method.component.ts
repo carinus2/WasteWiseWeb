@@ -1,4 +1,3 @@
-// payment-method.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,13 +7,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment-method.component.css']
 })
 export class PaymentMethodComponent {
+  totalAmount: number;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as { amount: number };
+    this.totalAmount = state.amount;
+  }
 
   selectPaymentMethod(method: string): void {
     console.log('Payment Method:', method);
-    // Handle the selection and navigate to a confirmation page or payment processing
-    this.router.navigate(['/confirmation']); // Adjust this route as necessary
+    if (method === 'cash') {
+      this.router.navigate(['/cash-confirmation'], { state: { amount: this.totalAmount } });
+    } else if (method === 'card') {
+      this.router.navigate(['/confirmation'], { state: { amount: this.totalAmount } }); // Adjust this route as necessary
+    }
   }
 
   goBack(): void {

@@ -47,7 +47,7 @@ export class PlaceOrderComponent implements OnInit {
   }
 
   placeOrder(): void {
-    this.router.navigate(['/payment-method']); // Redirect to payment method selection
+    this.router.navigate(['/payment-method'], { state: { amount: this.calculateTotalPrice() } }); // Redirect to payment method selection with state
   }
 
   goBack(): void {

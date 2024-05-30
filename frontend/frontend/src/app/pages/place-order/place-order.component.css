@@ -1,8 +1,8 @@
 /* General Styling for the Container and Overall Layout */
 .collector-form {
-  max-width: 600px; /* Reducing width for better focus */
-  margin: 40px auto; /* Centering the form on the page */
-  padding: 20px;
+  max-width: 800px; /* Increased width */
+  margin: 200px auto; /* Centering the form on the page with more vertical margin */
+  padding: 60px; /* Increased padding for more space inside */
   background: #ffffff;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   border-radius: 8px; /* Rounded corners */
@@ -13,18 +13,18 @@
 .collector-form h2 {
   text-align: center; /* Center-align the heading */
   color: #0056b3; /* Theme color */
-  margin-bottom: 20px; /* Space below the header */
+  margin-bottom: 40px; /* More space below the header */
 }
 
 /* List Styling */
 .item-list {
   list-style-type: none; /* Remove bullet points */
   padding: 0; /* Remove padding */
-  margin: 0 0 20px 0; /* Space at the bottom */
+  margin: 0 0 40px 0; /* More space at the bottom */
 }
 
 .item-list li {
-  padding: 8px 0; /* Padding for list items */
+  padding: 16px 0; /* More padding for list items */
   border-bottom: 1px solid #eaeaea; /* Light line under each item */
   color: #333; /* Dark grey color for text */
 }
@@ -36,25 +36,25 @@
 
 /* Total Price Styling */
 .total-price {
-  font-size: 18px;
+  font-size: 22px; /* Increased font size */
   font-weight: bold;
   color: #0056b3; /* Theme color, making it consistent */
   text-align: right; /* Align the price to the right */
-  margin-top: 10px; /* Space from the last item */
+  margin-top: 20px; /* More space from the last item */
 }
 
 /* Buttons Styling */
 .buttons-container {
   display: flex;
   justify-content: space-between; /* Distribute space between buttons */
-  padding-top: 10px;
+  padding-top: 20px; /* More padding at the top */
 }
 
 .button {
   flex-grow: 1; /* Make buttons grow to fill the container */
-  margin: 0 5px; /* Space between buttons */
-  padding: 10px 0; /* Padding for better touch interaction */
-  font-size: 16px; /* Readable font size */
+  margin: 0 10px; /* More space between buttons */
+  padding: 15px 0; /* Increased padding for better touch interaction */
+  font-size: 18px; /* Larger font size */
   text-transform: uppercase; /* Uppercase text for a button */
   color: white; /* White text */
   background-color: #007bff; /* Primary button color */
