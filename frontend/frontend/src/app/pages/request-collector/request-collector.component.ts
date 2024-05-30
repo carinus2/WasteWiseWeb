@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Router} from "@angular/router";
-
+import { Router } from '@angular/router';
 
 interface Item {
   name: string;
@@ -15,6 +14,7 @@ interface Category {
   expanded: boolean;
   items: Item[];
 }
+
 @Component({
   selector: 'app-request-collector',
   templateUrl: './request-collector.component.html',
@@ -23,7 +23,7 @@ interface Category {
 export class RequestCollectorComponent {
   userLocation: string = '';
   geolocationAvailable: boolean = navigator.geolocation ? true : false;
-  categories:Category[] = [
+  categories: Category[] = [
     {
       name: 'Paper',
       expanded: false,
@@ -85,7 +85,12 @@ export class RequestCollectorComponent {
     }
   ];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    const storedCategories = localStorage.getItem('categories');
+    if (storedCategories) {
+      this.categories = JSON.parse(storedCategories);
+    }
+  }
 
   calculateTotalPrice(): number {
     return this.categories.reduce((total: number, category) => {
@@ -93,8 +98,9 @@ export class RequestCollectorComponent {
     }, 0);
   }
 
-
   submitRequest(): void {
+    // Save the current categories to localStorage
+    localStorage.setItem('categories', JSON.stringify(this.categories));
     // Navigate to the place-order page with the current selected items
     this.router.navigate(['/place-order'], { state: { categories: this.categories } });
   }

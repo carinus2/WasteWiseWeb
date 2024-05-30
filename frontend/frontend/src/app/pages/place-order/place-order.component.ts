@@ -24,17 +24,21 @@ interface NavigationState {
   styleUrls: ['./place-order.component.css']
 })
 export class PlaceOrderComponent implements OnInit {
-  categories: Category[];
+  categories: Category[] = [];
 
   constructor(private router: Router) {
-    // Safely access the navigation state with type assertion
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as NavigationState;
-    this.categories = state?.categories;
-
-    if (!this.categories || this.categories.length === 0) {
-      console.error('No categories data available');
-      this.router.navigate(['/']); // Redirect back if no data
+    if (state?.categories) {
+      this.categories = state.categories;
+    } else {
+      const storedCategories = localStorage.getItem('categories');
+      if (storedCategories) {
+        this.categories = JSON.parse(storedCategories);
+      } else {
+        console.error('No categories data available');
+        this.router.navigate(['/']); // Redirect back if no data
+      }
     }
   }
 
@@ -47,6 +51,7 @@ export class PlaceOrderComponent implements OnInit {
   }
 
   placeOrder(): void {
+    localStorage.removeItem('categories'); // Clear categories from localStorage
     this.router.navigate(['/payment-method'], { state: { amount: this.calculateTotalPrice() } }); // Redirect to payment method selection with state
   }
 
