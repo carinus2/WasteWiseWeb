@@ -34,6 +34,7 @@ h1 {
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   text-decoration: none;
   color: inherit;
+  padding-bottom: 0px;
 }
 
 .option-button:hover {

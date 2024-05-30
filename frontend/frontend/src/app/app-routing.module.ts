@@ -9,6 +9,7 @@ import {TeamComponent} from "./pages/team/team.component";
 import {FAQComponent} from "./pages/faq/faq.component";
 import {HowtoComponent} from "./pages/howto/howto.component";
 import {RecyclingPointsComponent} from "./pages/recycling-points/recycling-points.component";
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 import {RequestCollectorComponent} from "./pages/request-collector/request-collector.component";
 import { PlaceOrderComponent } from './pages/place-order/place-order.component';
@@ -26,12 +27,11 @@ const routes: Routes = [
   { path: 'howto', component: HowtoComponent },
   { path: 'recycling-points', component: RecyclingPointsComponent },
   { path: 'request-collector', component:RequestCollectorComponent},
-  { path: "admin-dashboard", component: AdminComponentComponent},
-  { path: "admin-settings", component: AdminSettingsComponent},
-  { path: "admin/logout", component: LoginComponent},
   { path: "place-order", component: PlaceOrderComponent},
   { path: "payment-method", component: PaymentMethodComponent},
   // { path: "confirmation", component:ConfirmationService }
+  { path: 'regular-users/:id', component: UserEditComponent },
+  { path: 'recycling-points', component: RecyclingPointsComponent }
 ];
 
 @NgModule({
