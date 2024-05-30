@@ -5,10 +5,7 @@ import com.wastewiseweb.entity.*;
 import com.wastewiseweb.enums.ItemsType;
 import com.wastewiseweb.enums.PaymentType;
 import com.wastewiseweb.enums.StatusType;
-import com.wastewiseweb.repository.CollectorRepository;
-import com.wastewiseweb.repository.OrderRepository;
-import com.wastewiseweb.repository.PaymentRepository;
-import com.wastewiseweb.repository.RegularUserRepository;
+import com.wastewiseweb.repository.*;
 import com.wastewiseweb.service.CollectorService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +19,19 @@ public class Transformer {
     private final PaymentRepository paymentRepository;
     private final RegularUserRepository regularUserRepository;
 
+    private final CabRepository cabRepository;
+
 
     @Autowired
     public Transformer(CollectorService collectorService, OrderRepository orderRepository,
                        PaymentRepository paymentRepository, RegularUserRepository regularUserRepository,
-                        CollectorRepository collectorRepository) {
+                       CollectorRepository collectorRepository, CabRepository cabRepository) {
         this.collectorService = collectorService;
         this.orderRepository = orderRepository;
         this.paymentRepository = paymentRepository;
         this.regularUserRepository = regularUserRepository;
         this.collectorRepository = collectorRepository;
+        this.cabRepository = cabRepository;
     }
 
 
@@ -70,7 +70,7 @@ public class Transformer {
         return entity;
     }
 
-    public static CollectorDto toDto(CollectorEntity entity){
+    public static CollectorDto toDto(CollectorEntity entity) {
         var dto = new CollectorDto();
         dto.setId(entity.getId());
         dto.setEmail(entity.getEmail());
@@ -78,11 +78,11 @@ public class Transformer {
         dto.setLastName(entity.getLastName());
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setPassword(entity.getPassword());
-        dto.setCabID(entity.getId());
+        dto.setCabID(entity.getCabID() != null ? entity.getCabID().getId() : null);
         return dto;
     }
 
-    public static CollectorEntity fromDto(CollectorDto dto){
+    public static CollectorEntity fromDto(CollectorDto dto, CabRepository cabRepository) {
         var entity = new CollectorEntity();
         entity.setId(dto.getId());
         entity.setEmail(dto.getEmail());
@@ -90,7 +90,10 @@ public class Transformer {
         entity.setLastName(dto.getLastName());
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setPassword(dto.getPassword());
-        entity.setCabID(entity.getCabID());
+        if (dto.getCabID() != null) {
+            var cab = cabRepository.findById(dto.getCabID()).orElse(null);
+            entity.setCabID(cab);
+        }
         return entity;
     }
 

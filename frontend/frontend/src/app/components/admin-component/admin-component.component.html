@@ -3,6 +3,7 @@
     <p-table [value]="registrationUsers" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
+                <th pSortableColumn="id">ID<p-sortIcon field="id"></p-sortIcon></th>
                 <th pSortableColumn="email" style="width:20%">Email<p-sortIcon field="email"></p-sortIcon></th>
                 <th pSortableColumn="firstName" style="width:15%">First name<p-sortIcon field="firstName"></p-sortIcon></th>
                 <th pSortableColumn="lastName" style="width:15%">Last name<p-sortIcon field="lastName"></p-sortIcon></th>
@@ -13,6 +14,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-user>
             <tr>
+                <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
@@ -28,7 +30,7 @@
 </div>
 
 <p-dialog
-          header="Detaliile user-ului"
+          header="User details"
           [(visible)]="displayEditModal"
           [modal]="true">
 <h2>Edit User</h2>

@@ -35,7 +35,7 @@ public class CollectorService {
     }
 
     public CollectorDto addCollector(CollectorDto collectorDto) {
-        CollectorEntity collectorEntity = Transformer.fromDto(collectorDto);
+        CollectorEntity collectorEntity = Transformer.fromDto(collectorDto, cabRepository);
         CollectorEntity savedCollector = collectorRepository.save(collectorEntity);
         return Transformer.toDto(savedCollector);
     }

@@ -58,3 +58,63 @@ html, body, :host {
 .controls button.location-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
+.map-container {
+  height: 60vh; /* Adjust height as necessary */
+  width: 80vw; /* Adjust width as necessary */
+  max-width: 1200px;
+  margin-top: 20px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(100vh - 70px); /* Adjust to consider navbar */
+  margin-top: 70px; /* Adjust for navbar height */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.controls input.location-input {
+  width: 300px;
+  padding: 8px;
+  margin-right: 5px;
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 4px;
+  background-color: #f8f9fa; /* Light background */
+}
+
+.controls button.location-button, .controls select.location-button {
+  padding: 8px 15px;
+  cursor: pointer;
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.controls button.location-button:hover, .controls select.location-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
+
+
+
+
+
+

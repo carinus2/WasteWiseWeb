@@ -28,7 +28,7 @@ h1 {
 
 .option-button {
   display: block;
-  padding: 30px;
+  padding: 0px;
   background-color: #f0f0f0;
   border-radius: 10px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;

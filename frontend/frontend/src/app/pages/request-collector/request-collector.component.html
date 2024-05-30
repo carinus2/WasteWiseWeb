@@ -1,0 +1,29 @@
+
+<div class="collector-form">
+  <h2>Request Trash Collection</h2>
+  <form (ngSubmit)="submitRequest()">
+<!--    <div>-->
+<!--      <label for="location">Your Location:</label>-->
+<!--      <input type="text" id="location" [(ngModel)]="userLocation" name="location" required>-->
+<!--      <button type="button" (click)="getCurrentLocation()" *ngIf="geolocationAvailable">Use My Location</button>-->
+<!--    </div>-->
+    <div class="categories">
+      <div *ngFor="let category of categories" class="category-container">
+        <h3>{{ category.name }}</h3>
+        <div *ngFor="let item of category.items" class="category-items">
+          <label>
+            <span>{{ item.name }} ({{ item.price }} RON each):</span>
+            <input type="number" min="0" [(ngModel)]="item.quantity" name="{{item.name}}">
+          </label>
+          <small>{{ item.description }}</small>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="submit">Request Collection</button>
+    </div>
+    <div class="total-price">
+      Total Price: {{ calculateTotalPrice() }} RON
+    </div>
+  </form>
+</div>

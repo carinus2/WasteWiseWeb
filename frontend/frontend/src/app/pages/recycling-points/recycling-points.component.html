@@ -1,16 +1,17 @@
+
 <div class="container">
   <div class="controls">
     <input id="autocomplete" #autocompleteInput placeholder="Enter your location" class="location-input" />
     <button (click)="updateLocation()" class="location-button">Go</button>
+    <select (change)="filterMarkers($event)" class="location-button">
+      <option value="all">All</option>
+      <option value="plastic">Plastic</option>
+      <option value="glass">Glass</option>
+      <option value="metal">Metal</option>
+      <option value="paper">Paper</option>
+      <option value="big_trash">Big Trash</option>
+    </select>
   </div>
-
-  <div class="map-container">
-    <google-map height="100%"
-                width="100%"
-                [center]="center"
-                [zoom]="zoom"
-                (mapClick)="moveMap($event)"
-                (mapMousemove)="move($event)">
-    </google-map>
-  </div>
+  <div id="map" class="map-container"></div>
 </div>
+

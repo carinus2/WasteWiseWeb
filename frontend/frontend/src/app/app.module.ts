@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -13,10 +14,11 @@ import { IntroComponent } from './pages/intro/intro.component';
 import { TeamComponent } from './pages/team/team.component';
 import { AdminComponentComponent } from './components/admin-component/admin-component.component';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
-import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TabViewModule } from 'primeng/tabview';
 import { AvatarModule } from 'primeng/avatar';
@@ -24,13 +26,17 @@ import { BadgeModule } from 'primeng/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FAQComponent } from './pages/faq/faq.component';
 import { HowtoComponent } from './pages/howto/howto.component';
-// import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';
 import {CommonModule} from "@angular/common";
 import { RecyclingPointsComponent } from './pages/recycling-points/recycling-points.component';
 import {GoogleMapsModule} from "@angular/google-maps";
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';  // Importă FormsModule
+import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';  // Importă FormsModule
 
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TabViewModule } from 'primeng/tabview';
+import { AvatarModule } from 'primeng/avatar';
+import { BadgeModule } from 'primeng/badge';
 
 
 @NgModule({
@@ -44,12 +50,15 @@ import { FormsModule } from '@angular/forms';  // Importă FormsModule
     TeamComponent,
     AdminComponentComponent,
     AdminSettingsComponent,
-    UserEditComponent,
     TeamComponent,
     FAQComponent,
     HowtoComponent,
     RecyclingPointsComponent,
-    // RequestCollectorComponent,
+    RequestCollectorComponent,
+    TeamComponent,
+    AdminComponentComponent,
+    AdminSettingsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -57,6 +66,8 @@ import { FormsModule } from '@angular/forms';  // Importă FormsModule
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    TableModule,
+    BrowserAnimationsModule,
     TableModule,
     DialogModule,
     TabMenuModule,
