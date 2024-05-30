@@ -34,6 +34,14 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.category-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+
 .category-container:hover {
   transform: translateY(-5px); /* Subtle lift effect */
 }

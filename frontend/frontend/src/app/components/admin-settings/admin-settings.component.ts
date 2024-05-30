@@ -3,11 +3,12 @@ import { MenuItem } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CabService } from '../../services/CabService';
 import { OrderService } from '../../services/OrderService';
-import { CabDto } from '../../models/CabDto';
+import { CollectorService } from '../../services/CollectorService';
 import { CollectorDto } from '../../models/CollectorDto';
 import { OrderDto } from '../../models/OrderDto';
 import { StatusType, getStatusDisplayName } from '../../enums/StatusType';
 import { forkJoin } from 'rxjs';
+import { CabDto } from '../../models/CabDto';
 
 @Component({
   selector: 'app-admin-settings',
@@ -40,7 +41,6 @@ export class AdminSettingsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadCollectorsAndCabs();
     this.settingsItems = [
       {label: 'Cabs', icon: 'pi pi-fw pi-car', command: () => { this.activeTab = 'Cabs'; this.loadCollectorsAndCabs(); }},
       {label: 'Collectors', icon: 'pi pi-fw pi-users', command: () => { this.activeTab = 'Collectors'; this.loadCollectors(); }},
@@ -128,7 +128,7 @@ export class AdminSettingsComponent implements OnInit {
     });
     this.toggleOrderModal();
   }
-
+  
   deleteOrder(order: OrderDto): void {
     if (confirm('Are you sure you want to delete this order?')) {
       this.orderService.deleteOrder(order.id).subscribe({
@@ -146,10 +146,6 @@ export class AdminSettingsComponent implements OnInit {
 
   onSaveOrder() {
     const updatedOrder: OrderDto = this.editOrderForm.value;
-
-    // Debugging log to ensure form values are captured
-    console.log('Form Values:', this.editOrderForm.value);
-    console.log('Updated Order:', updatedOrder);
 
     if (!this.editOrderForm.controls['type'].value) {
       alert('Order type is required');
@@ -262,4 +258,3 @@ export class AdminSettingsComponent implements OnInit {
     this.displayEditCollectorModal = !this.displayEditCollectorModal;
   }
 }
-
