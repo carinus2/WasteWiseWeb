@@ -17,7 +17,7 @@ export class HttpIntercept implements HttpInterceptor {
   constructor(private router: Router) {}
 
 
-  
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler

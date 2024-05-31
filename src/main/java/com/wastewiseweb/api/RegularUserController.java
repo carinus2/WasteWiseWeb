@@ -6,6 +6,7 @@ import com.wastewiseweb.service.RegularUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class RegularUserController {
         this.regularUserService = regularUserService;
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<RegularUserDto>> getRegularUsers(){
         return ResponseEntity.ok(regularUserService.getUsers());
