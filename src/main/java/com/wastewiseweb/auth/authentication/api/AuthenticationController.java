@@ -47,11 +47,11 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegularUserDto request) {
-    try {
-        regularUserService.addUser(request);
-        return ResponseEntity.ok().body("User registered successfully");
-    } catch (Error e){
-        return ResponseEntity.badRequest().body(e.getMessage());
+        try {
+            regularUserService.addUser(request);
+            return ResponseEntity.ok().body("User registered successfully");
+        } catch (Error e){
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
