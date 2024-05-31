@@ -34,7 +34,7 @@ public class SecurityConfig {
         http
                 .cors().and().csrf().disable()
                 .authorizeHttpRequests()
-//                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/auth/**").permitAll()
 //                 .requestMatchers("/api/regular-users/**").permitAll()
 //                 .requestMatchers("/api/regular-users/{id}").permitAll()
 //                 .requestMatchers("/api/cabs/**").permitAll()
@@ -45,7 +45,7 @@ public class SecurityConfig {
 //                 .requestMatchers("/api/orders/{id}").permitAll()
 //                 .requestMatchers("/api/payments/**").permitAll()
 //                 .requestMatchers("/api/payments/{id}").permitAll()
-                .requestMatchers("/api/**").permitAll()
+              //  .requestMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()

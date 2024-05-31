@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {  } from '@angular/platform-browser/animations';
-import {  } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,12 +25,15 @@ import { RecyclingPointsComponent } from './pages/recycling-points/recycling-poi
 import {GoogleMapsModule} from "@angular/google-maps";
 import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';  // Importă FormsModule
+import { RequestCollectorComponent } from './pages/request-collector/request-collector.component';  
 
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TabViewModule } from 'primeng/tabview';
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
+import { JwtInterceptor } from './auth.interceptor';
+import { HttpIntercept } from './http.interceptor';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 
 
 @NgModule({
@@ -52,6 +55,7 @@ import { BadgeModule } from 'primeng/badge';
     TeamComponent,
     AdminComponentComponent,
     AdminSettingsComponent,
+    ForbiddenComponent,
 
   ],
   imports: [
@@ -82,7 +86,13 @@ import { BadgeModule } from 'primeng/badge';
     BadgeModule
   ],
   providers: [
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()), 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpIntercept, multi: true },
   ],
   bootstrap: [AppComponent]
 })

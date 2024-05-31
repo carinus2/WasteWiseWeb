@@ -1,0 +1,20 @@
+<div class="content">
+  <div class="confirmation-container">
+    <h2>Order Confirmation</h2>
+    <p class="info-message">Please make sure you have the exact amount ready for the collector.</p>
+    <div class="details">
+      <p>Total Amount Due: <span class="highlight">{{ price | currency:' RON ' }}</span></p>
+      <p>Collector's Plate Number: <span class="highlight">{{ plateNumber }}</span></p>
+      <p>Driver's Name: <span class="highlight">{{ driverName }}</span></p>
+      <p>Driver's Phone Number: <span class="highlight">{{ driverPhoneNumber }}</span></p>
+      <p>Estimated Arrival Time: <span class="highlight">{{ arrivalTime }} minutes</span></p>
+      <p *ngIf="timerStarted">Time Remaining: <span class="highlight">{{ formatTime(remainingTime) }}</span></p>
+    </div>
+    <div class="button-container">
+      <button (click)="confirmReadiness()" class="button confirm-button">I'm Ready</button>
+<!--      <button (click)="goBack()" class="button go-back-button">Go Back</button>-->
+    </div>
+    <p>If you have any issues, please <a href="mailto:support@wastewise.com">contact support</a>.</p>
+  </div>
+  <app-collector-map></app-collector-map>
+</div>

@@ -17,10 +17,11 @@
     <ul class="navbar-menu" *ngIf="!isAdminPage">
       <li><a routerLink="/signup" class="navbar-button get-started-btn">Get Started</a></li>
       <li><a routerLink="/team" class="navbar-button">Team</a></li>
+      <li><a routerLink="/login" class="navbar-button">Logout</a></li>
     </ul>
     <ul class="navbar-menu" *ngIf="isAdminPage">
       <li><a routerLink="/admin-dashboard" class="navbar-button">Dashboard</a></li>
       <li><a routerLink="/admin-settings" class="navbar-button">Settings</a></li>
-      <li><a routerLink="/admin/logout" class="navbar-button">Logout</a></li>
+      <li><a routerLink="/login" class="navbar-button">Logout</a></li>
     </ul>
   </div>

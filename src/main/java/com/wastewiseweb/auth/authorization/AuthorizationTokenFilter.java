@@ -11,7 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class AuthorizationTokenFilter extends OncePerRequestFilter {
 
@@ -26,10 +30,12 @@ public class AuthorizationTokenFilter extends OncePerRequestFilter {
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 var jwsClaims = jwtUtils.getClaims(jwt);
 
-                var roles = jwsClaims.get("roles", String.class);
+                List<String> roles = jwsClaims.get("roles", ArrayList.class);
                 var username = jwsClaims.getSubject();
 
-                var entitlements = Arrays.stream(roles.split(",")).map(SimpleGrantedAuthority::new).toList();
+                var entitlements = roles.stream()
+                        .map(SimpleGrantedAuthority::new)
+                        .collect(toList());
 
                 var authentication = new UsernamePasswordAuthenticationToken(username, null, entitlements);
 

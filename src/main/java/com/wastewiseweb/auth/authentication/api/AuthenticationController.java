@@ -31,27 +31,27 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticateUser(@RequestBody AuthenticationRequest request) {
 
-
-        if ("admin".equals(request.getUsername()) && "admin".equals(request.getPassword())) {
-            String jwt = "admin-specific-jwt";
-            return ResponseEntity.ok(new AuthenticationResponse(jwt, Collections.singletonList("ROLE_ADMIN")));
-        }
         var authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-        var jwt = jwtUtils.generateJwtToken(authentication);
+        if ("admin@email.com".equals(request.getUsername()) && "admin".equals(request.getPassword())) {
+            var jwt = jwtUtils.generateAdminJwtToken(authentication);
+            return ResponseEntity.ok(new AuthenticationResponse(jwt, Collections.emptyList()));
+        } else{
+            var jwt = jwtUtils.generateJwtToken(authentication);
+            return ResponseEntity.ok(new AuthenticationResponse(jwt, Collections.emptyList()));
+        }
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt, Collections.emptyList()));
     }
 
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegularUserDto request) {
-    try {
-        regularUserService.addUser(request);
-        return ResponseEntity.ok().body("User registered successfully");
-    } catch (Error e){
-        return ResponseEntity.badRequest().body(e.getMessage());
+        try {
+            regularUserService.addUser(request);
+            return ResponseEntity.ok().body("User registered successfully");
+        } catch (Error e){
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

@@ -85,7 +85,12 @@ export class RequestCollectorComponent {
     }
   ];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    const storedCategories = localStorage.getItem('categories');
+    if (storedCategories) {
+      this.categories = JSON.parse(storedCategories);
+    }
+  }
 
   calculateTotalPrice(): number {
     return this.categories.reduce((total: number, category) => {
@@ -94,8 +99,32 @@ export class RequestCollectorComponent {
   }
 
   submitRequest(): void {
-    // Navigate to the place-order page with the current selected items
-    this.router.navigate(['/place-order'], { state: { categories: this.categories } });
+    // Save the current categories to localStorage
+    localStorage.setItem('categories', JSON.stringify(this.categories));
+    //localStorage.setItem('amount', amount.toString());
+    this.router.navigate(['/orders'], { state: { categories: this.categories } });
   }
 
+  getCurrentLocation(): void {
+    if (this.geolocationAvailable) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.convertToAddress(position.coords.latitude, position.coords.longitude);
+      }, () => {
+        alert('Unable to retrieve your location');
+      });
+    }
+  }
+
+  convertToAddress(lat: number, lon: number): void {
+    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=AIzaSyDzKjE6YGJmHyUxpO_v4fYcCRrKmKSUonA`;
+    this.http.get<any>(geocodeUrl).subscribe(data => {
+      if (data.status === 'OK') {
+        this.userLocation = data.results[0].formatted_address;
+      } else {
+        alert('Geocoding failed: ' + data.status);
+      }
+    }, err => {
+      alert('Error retrieving address: ' + err.message);
+    });
+  }
 }
