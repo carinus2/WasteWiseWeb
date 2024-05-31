@@ -99,12 +99,11 @@ export class RequestCollectorComponent {
   }
 
   submitRequest(): void {
-    // Save the current categories to localStorage
     localStorage.setItem('categories', JSON.stringify(this.categories));
-    //localStorage.setItem('amount', amount.toString());
     this.router.navigate(['/orders'], { state: { categories: this.categories } });
   }
-
+  
+  
   getCurrentLocation(): void {
     if (this.geolocationAvailable) {
       navigator.geolocation.getCurrentPosition((position) => {

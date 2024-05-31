@@ -34,6 +34,8 @@ import { BadgeModule } from 'primeng/badge';
 import { JwtInterceptor } from './auth.interceptor';
 import { HttpIntercept } from './http.interceptor';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { CashPaymentConfirmationComponent } from './pages/cash-payment-confirmation/cash-payment-confirmation.component';
+import { CollectorMapComponent } from './pages/collector-map/collector-map.component';
 
 
 @NgModule({
@@ -56,7 +58,8 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
     AdminComponentComponent,
     AdminSettingsComponent,
     ForbiddenComponent,
-
+    CashPaymentConfirmationComponent,
+    CollectorMapComponent
   ],
   imports: [
     BrowserModule,
