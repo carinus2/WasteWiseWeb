@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,6 +21,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Autowired
@@ -35,16 +37,6 @@ public class SecurityConfig {
                 .cors().and().csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
-//                 .requestMatchers("/api/regular-users/**").permitAll()
-//                 .requestMatchers("/api/regular-users/{id}").permitAll()
-//                 .requestMatchers("/api/cabs/**").permitAll()
-//                 .requestMatchers("/api/cabs/{id}").permitAll()
-//                 .requestMatchers("/api/collectors/**").permitAll()
-//                 .requestMatchers("/api/collectors/{id}").permitAll()
-//                 .requestMatchers("/api/orders/**").permitAll()
-//                 .requestMatchers("/api/orders/{id}").permitAll()
-//                 .requestMatchers("/api/payments/**").permitAll()
-//                 .requestMatchers("/api/payments/{id}").permitAll()
               //  .requestMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
