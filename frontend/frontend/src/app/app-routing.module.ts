@@ -16,6 +16,7 @@ import { PlaceOrderComponent } from './pages/place-order/place-order.component';
 import { PaymentMethodComponent } from './pages/payment-method/payment-method.component';
 import { ConfirmationService } from 'primeng/api';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { CashPaymentConfirmationComponent } from './pages/cash-payment-confirmation/cash-payment-confirmation.component';
 const routes: Routes = [
   { path: 'intro', component: IntroComponent },
   { path: 'login', component: LoginComponent },
@@ -33,7 +34,9 @@ const routes: Routes = [
   // { path: "confirmation", component:ConfirmationService }
   { path: 'regular-users/:id', component: UserEditComponent },
   { path: 'recycling-points', component: RecyclingPointsComponent },
-  { path: 'forbidden', component: ForbiddenComponent}
+  { path: 'forbidden', component: ForbiddenComponent},
+  { path: 'cash-confirmation', component: CashPaymentConfirmationComponent}
+
 ];
 
 @NgModule({
