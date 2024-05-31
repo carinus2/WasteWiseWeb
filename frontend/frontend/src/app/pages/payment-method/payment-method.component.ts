@@ -9,11 +9,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PaymentMethodComponent {
   orderId: number;
+  totalAmount: number;
 
   constructor(private router: Router, private http: HttpClient) {
     const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras.state as { orderId: number };
-    this.orderId = state?.orderId;
+    const state = navigation?.extras.state as { amount: number };
+    this.orderId = state?.amount;
+    this.totalAmount = state.amount;
 
     if (!this.orderId) {
       console.error('No order ID available');
@@ -28,10 +30,16 @@ export class PaymentMethodComponent {
       amount: parseFloat(localStorage.getItem('amount') || '0')
     };
 
+
     this.http.post('/api/payments', paymentDto).subscribe(
       (response: any) => {
         console.log('Payment recorded successfully:', response);
-        this.router.navigate(['/confirmation']); // Adjust this route as necessary
+        if (method === 'cash') {
+          this.router.navigate(['/cash-confirmation'], { state: { amount: this.totalAmount } });
+        } else if (method === 'card') {
+          this.router.navigate(['/confirmation'], { state: { amount: this.totalAmount } }); // Adjust this route as necessary
+        }
+
       },
       (error) => {
         console.error('Error recording payment:', error);

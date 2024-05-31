@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 interface Item {
   name: string;
@@ -26,16 +25,21 @@ interface NavigationState {
   styleUrls: ['./place-order.component.css']
 })
 export class PlaceOrderComponent implements OnInit {
-  categories: Category[];
+  categories: Category[] = [];
 
   constructor(private router: Router, private http: HttpClient) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as NavigationState;
-    this.categories = state?.categories;
-
-    if (!this.categories || this.categories.length === 0) {
-      console.error('No categories data available');
-      this.router.navigate(['/']); // Redirect back if no data
+    if (state?.categories) {
+      this.categories = state.categories;
+    } else {
+      const storedCategories = localStorage.getItem('categories');
+      if (storedCategories) {
+        this.categories = JSON.parse(storedCategories);
+      } else {
+        console.error('No categories data available');
+        this.router.navigate(['/']); // Redirect back if no data
+      }
     }
   }
 
@@ -78,7 +82,6 @@ placeOrder(): void {
     }
   );
 }
-
 
   goBack(): void {
     this.router.navigate(['/request-collector']); // Navigate back
